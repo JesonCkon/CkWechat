@@ -11,6 +11,10 @@ namespace CkWechat\Core;
 
 class Config
 {
-
+    public $conf = array();
+    public function initialization()
+    {
+      # code...
+    }
 }
 ?>
