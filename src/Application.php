@@ -21,6 +21,7 @@ class Application extends Container
     private function __construct()
     {
         #TODO
+        $this->setServices();
     }
     public static function initialization()
     {

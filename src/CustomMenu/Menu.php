@@ -6,12 +6,13 @@
  * Time: 17:02.
  */
 
-namespace CkWechat\Menu;
+namespace CkWechat\CustomMenu;
 
 class Menu
 {
     public function add($menu_data)
     {
+        echo 333;
         #$params = array('access_token' => $this->access_token);
         #$http = new Core\Http();
         #fix wechat api rule post body is json string and JSON_UNESCAPED_UNICODE

@@ -7,12 +7,15 @@
  */
 
 namespace CkWechat\Service;
-
+use CkWechat\Core\Container as Container;
+use CkWechat\CustomMenu;
 
 class CustomMenuService implements ServiceInterface
 {
     public function register(Container $obj)
     {
-        $obj->menu = function ($obj) {return new CustomMenu\Menu($obj);};
+        $obj->menu = function ($obj) {
+          return new CustomMenu\Menu($obj);
+        };
     }
 }
