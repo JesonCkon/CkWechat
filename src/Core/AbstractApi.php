@@ -8,11 +8,13 @@
 
 namespace CkWechat\Core;
 use CkWechat\Core\Config as Config;
+use CkWechat\Core\Http as Http;
 
 abstract class AbstractApi
 {
     protected $http;
     protected $accessToken;
+    use Core\Singleton;
     public function getHttp()
     {
         if (is_null($this->http)) {
