@@ -7,9 +7,18 @@
  */
 
 namespace CkWechat\Core;
+use CkWechat\Core\Config as Config;
 
 abstract class AbstractApi
 {
     protected $http;
     protected $accessToken;
+    public function getHttp()
+    {
+        if (is_null($this->http)) {
+            $this->http = new Http();
+        }
+        return $this->http;
+    }
 }
+?>
