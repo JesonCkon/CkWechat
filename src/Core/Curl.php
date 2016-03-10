@@ -15,6 +15,40 @@ class Curl
     public $sslcert_path = '';
     public $sslkey_path = '';
     public $beforeSendFunction = null;
+    public $curl = null;
+
+    public function get($url, $data = array())
+    {
+      $this->setUrl($url, $data);
+    }
+    public function setProxy()
+    {
+      if ($this->curl_proxy_host != '0.0.0.0' && $this->curl_proxy_port != 0) {
+          $this->setOpt(CURLOPT_PROXY,$this->curl_proxy_host);
+          $this->setOpt(CURLOPT_PROXYPORT,$this->curl_proxy_port);
+      }
+    }
+    public function setCurl()
+    {
+        $this->curl = curl_init();
+    }
+    public function setUrl($url, $data = array())
+    {
+      $this->baseUrl = $url;
+      $this->setOpt(CURLOPT_URL, $this->url);
+    }
+    public function setOpt($option, $value)
+    {
+        $required_options = array(
+            CURLOPT_RETURNTRANSFER => 'CURLOPT_RETURNTRANSFER',
+        );
+        if (in_array($option, array_keys($required_options), true) && !($value === true)) {
+            trigger_error($required_options[$option].' is a required option', E_USER_WARNING);
+        }
+        $this->options[$option] = $value;
+
+        return curl_setopt($this->curl, $option, $value);
+    }
     public function beforeSend($callback)
     {
         $this->beforeSendFunction = $callback;
@@ -36,6 +70,7 @@ class Curl
     {
         # code...
     }
+
     private static function postXmlCurl(string $xml, string $url, $useCert = false, $second = 30)
     {
         $ch = curl_init();
