@@ -68,6 +68,7 @@ class Curl
     }
     public function get($url, $params = array())
     {
+        $this->setCurl();
         $this->run();
     }
 
