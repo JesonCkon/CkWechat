@@ -69,7 +69,7 @@ class Curl
     public function get($url, $params = array())
     {
         $this->setCurl();
-        $this->beforeSend();
+        #$this->beforeSend();
         $this->run();
     }
 
