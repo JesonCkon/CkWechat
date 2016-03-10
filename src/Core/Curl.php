@@ -68,7 +68,7 @@ class Curl
     }
     public function get($url, $params = array())
     {
-        # code...
+        $this->run();
     }
 
     private static function postXmlCurl(string $xml, string $url, $useCert = false, $second = 30)
