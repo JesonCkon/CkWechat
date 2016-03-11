@@ -10,32 +10,71 @@ namespace CkWechat\Core;
 
 class Curl
 {
-    public $curl_proxy_host = '';
-    public $curl_proxy_port = '';
-    public $sslcert_path = '';
-    public $sslkey_path = '';
-    public $beforeSendFunction = null;
     public $curl = null;
 
-    public function get($url, $data = array())
+    public $curl_proxy_host = '0.0.0.0';
+    public $curl_proxy_port = 0;
+
+    public $sslcert_path = '';
+    public $sslkey_path = '';
+    public $useCert = false;
+    public $is_ssl = false;
+
+    public $requestHeaders = null;
+    public $responseHeaders = null;
+    public $rawResponseHeaders = '';
+    public $response = null;
+    public $rawResponse = null;
+
+    public $beforeSendFunction = null;
+
+    public function __construct()
     {
-      $this->setUrl($url, $data);
+        $this->setCurl();
+        $this->setHeader();
+        $this->setProxy();
+        $this->setOpt(CURLINFO_HEADER_OUT, true);
+        $this->setOpt(CURLOPT_RETURNTRANSFER, true);
     }
-    public function setProxy()
+    public function setUrl($url, $data = array())
     {
-      if ($this->curl_proxy_host != '0.0.0.0' && $this->curl_proxy_port != 0) {
-          $this->setOpt(CURLOPT_PROXY,$this->curl_proxy_host);
-          $this->setOpt(CURLOPT_PROXYPORT,$this->curl_proxy_port);
-      }
+        $this->baseUrl = $url;
+        $this->url = $this->buildUrl($url, $data);
+        $this->setOpt(CURLOPT_URL, $this->url);
+    }
+    private function buildUrl($url, $data = array())
+    {
+        return $url.(empty($data) ? '' : '?'.http_build_query($data));
     }
     public function setCurl()
     {
         $this->curl = curl_init();
     }
-    public function setUrl($url, $data = array())
+    public function setProxy()
     {
-      $this->baseUrl = $url;
-      $this->setOpt(CURLOPT_URL, $this->url);
+        if ($this->curl_proxy_host != '0.0.0.0' && $this->curl_proxy_port != 0) {
+            $this->setOpt(CURLOPT_PROXY, $this->curl_proxy_host);
+            $this->setOpt(CURLOPT_PROXYPORT, $this->curl_proxy_port);
+        }
+    }
+    public function setSSL()
+    {
+        if ($this->is_ssl == true) {
+            $this->setOpt(CURLOPT_SSL_VERIFYPEER, true);
+            $this->setOpt(CURLOPT_SSL_VERIFYHOST, 2);
+        }
+        if ($this->useCert == true) {
+            //设置证书
+            //使用证书：cert 与 key 分别属于两个.pem文件
+            $this->setOpt(CURLOPT_SSLCERTTYPE, 'PEM');
+            $this->setOpt(CURLOPT_SSLCERT, $this->sslcert_path);
+            $this->setOpt(CURLOPT_SSLKEYTYPE, 'PEM');
+            $this->setOpt(CURLOPT_SSLKEY, $this->sslkey_path);
+        }
+    }
+    public function setHeader()
+    {
+        $this->setOpt(CURLOPT_HEADER, false);
     }
     public function setOpt($option, $value)
     {
@@ -53,6 +92,10 @@ class Curl
     {
         $this->beforeSendFunction = $callback;
     }
+    public function buildPostData($data)
+    {
+        # code...
+    }
     public function call()
     {
         $args = func_get_args();
@@ -65,14 +108,30 @@ class Curl
     public function run()
     {
         $this->call($this->beforeSendFunction);
+        $this->rawResponse = curl_exec($this->curl);
+        $this->curlErrorCode = curl_errno($this->curl);
     }
-    public function get($url, $params = array())
+    public function get($url, $params = array(), $callback = null)
     {
-        $this->setCurl();
-        #$this->beforeSend();
+        $this->setUrl($url, $params);
+        $this->beforeSend($callback);
         $this->run();
     }
+    public function post($value = '')
+    {
+        $this->setOpt(CURLOPT_CUSTOMREQUEST, 'POST');
+        $this->setOpt(CURLOPT_POST, true);
+        $this->setOpt(CURLOPT_POSTFIELDS, $this->buildPostData($data));
 
+        return $this->run();
+    }
+    public function close()
+    {
+        if (is_resource($this->curl)) {
+            curl_close($this->curl);
+        }
+    }
+    /*
     private static function postXmlCurl(string $xml, string $url, $useCert = false, $second = 30)
     {
         $ch = curl_init();
@@ -120,5 +179,5 @@ class Curl
             curl_close($ch);
             throw new \Exception("curl出错，错误码:$error");
         }
-    }
+    }*/
 }
