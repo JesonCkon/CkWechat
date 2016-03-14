@@ -10,31 +10,24 @@ namespace CkWechat\Core;
 class Curl
 {
     public $curl = null;
-
     public $headers = array();
     public $curl_proxy_host = '0.0.0.0';
     public $curl_proxy_port = 0;
-
     public $sslcert_path = '';
     public $sslkey_path = '';
     public $useCert = false;
     public $is_ssl = false;
-
     public $requestHeaders = null;
     public $responseHeaders = null;
     public $rawResponseHeaders = '';
     public $response = null;
     public $rawResponse = null;
-
     public $beforeSendFunction = null;
+    public $completeFunction = null;
 
     public function __construct()
     {
         $this->setCurl();
-        $this->setHeader();
-        $this->setProxy();
-        $this->setOpt(CURLINFO_HEADER_OUT, true);
-        $this->setOpt(CURLOPT_RETURNTRANSFER, true);
     }
     public function setUrl($url, $data = array())
     {
@@ -74,6 +67,7 @@ class Curl
             $this->setOpt(CURLOPT_CAINFO, $this->cainfo_path);
         }
     }
+
     public function setHeader()
     {
         if (count($this->headers) >= 1) {
@@ -94,9 +88,17 @@ class Curl
 
         return curl_setopt($this->curl, $option, $value);
     }
+    public function getOpt($option)
+    {
+        return $this->options[$option];
+    }
     public function beforeSend($callback)
     {
         $this->beforeSendFunction = $callback;
+    }
+    public function complete($callback)
+    {
+        $this->completeFunction = $callback;
     }
     public function call()
     {
@@ -110,9 +112,27 @@ class Curl
     public function run()
     {
         $this->setSSL();
+
+        $this->setHeader();
+        $this->setProxy();
+
+        $this->setOpt(CURLINFO_HEADER_OUT, true);
+        $this->setOpt(CURLOPT_RETURNTRANSFER, true);
+
         $this->call($this->beforeSendFunction);
         $this->rawResponse = curl_exec($this->curl);
         $this->curlErrorCode = curl_errno($this->curl);
+        $this->curlErrorMessage = curl_error($this->curl);
+        $this->curlError = !($this->curlErrorCode === 0);
+        $this->httpStatusCode = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+        $this->httpError = in_array(floor($this->httpStatusCode / 100), array(4, 5));
+        $this->error = $this->curlError || $this->httpError;
+        $this->errorCode = $this->error ? ($this->curlError ? $this->curlErrorCode : $this->httpStatusCode) : 0;
+        $this->effectiveUrl = curl_getinfo($this->curl, CURLINFO_EFFECTIVE_URL);
+
+        $this->call($this->completeFunction);
+
+        return $this;
     }
     public function get($url, $params = array(), $callback = null)
     {
@@ -120,79 +140,20 @@ class Curl
         $this->beforeSend($callback);
         $this->run();
     }
-    public function post($url, $data)
+    public function post($url, $data, $callback = null)
     {
         $this->setUrl($url);
         $this->setOpt(CURLOPT_CUSTOMREQUEST, 'POST');
         $this->setOpt(CURLOPT_POST, true);
         $this->setOpt(CURLOPT_POSTFIELDS, $data);
+        $this->beforeSend($callback);
         $this->run();
     }
     public function close()
     {
         if (is_resource($this->curl)) {
             curl_close($this->curl);
+            $this->curl = null;
         }
     }
-    public function outJson()
-    {
-        if ($this->rawResponse) {
-            $this->jsonData = json_decode($this->rawResponse, true);
-        }
-
-        return $this;
-    }
-    public function jsonGet($keyname = '')
-    {
-        return isset($this->jsonData[$keyname]) ? $this->jsonData[$keyname] : '';
-    }
-    /*
-    private static function postXmlCurl(string $xml, string $url, $useCert = false, $second = 30)
-    {
-        $ch = curl_init();
-        //设置超时
-        curl_setopt($ch, CURLOPT_TIMEOUT, $second);
-
-        //如果有配置代理这里就设置代理
-        if ($this->curl_proxy_host != '0.0.0.0'
-            && $this->curl_proxy_port != 0) {
-            curl_setopt($ch, CURLOPT_PROXY, $this->curl_proxy_host);
-            curl_setopt($ch, CURLOPT_PROXYPORT, $this->curl_proxy_port);
-        }
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);//严格校验
-        //设置header
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        //要求结果为字符串且输出到屏幕上
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        if ($useCert == true) {
-            //设置证书
-            //使用证书：cert 与 key 分别属于两个.pem文件
-            curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'PEM');
-            curl_setopt($ch, CURLOPT_SSLCERT, $this->sslcert_path);
-            curl_setopt($ch, CURLOPT_SSLKEYTYPE, 'PEM');
-            curl_setopt($ch, CURLOPT_SSLKEY, $this->sslkey_path);
-        }
-        //post提交方式
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
-        //运行curl
-        if ($_GET['debug'] == 1) {
-            echo $url.'</br>';
-            echo $xml.'</br>';
-        }
-        $data = curl_exec($ch);
-        //返回结果
-        if ($data) {
-            curl_close($ch);
-
-            return $data;
-        } else {
-            $error = curl_errno($ch);
-            curl_close($ch);
-            throw new \Exception("curl出错，错误码:$error");
-        }
-    }*/
 }
