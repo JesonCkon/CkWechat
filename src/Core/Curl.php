@@ -5,13 +5,13 @@
  * Date: 16/3/8
  * Time: 23:28.
  */
-
 namespace CkWechat\Core;
 
 class Curl
 {
     public $curl = null;
 
+    public $headers = array();
     public $curl_proxy_host = '0.0.0.0';
     public $curl_proxy_port = 0;
 
@@ -62,19 +62,25 @@ class Curl
         if ($this->is_ssl == true) {
             $this->setOpt(CURLOPT_SSL_VERIFYPEER, true);
             $this->setOpt(CURLOPT_SSL_VERIFYHOST, 2);
+        } else {
+            $this->setOpt(CURLOPT_SSL_VERIFYPEER, false);
+            $this->setOpt(CURLOPT_SSL_VERIFYHOST, false);
         }
         if ($this->useCert == true) {
-            //设置证书
-            //使用证书：cert 与 key 分别属于两个.pem文件
             $this->setOpt(CURLOPT_SSLCERTTYPE, 'PEM');
             $this->setOpt(CURLOPT_SSLCERT, $this->sslcert_path);
             $this->setOpt(CURLOPT_SSLKEYTYPE, 'PEM');
             $this->setOpt(CURLOPT_SSLKEY, $this->sslkey_path);
+            $this->setOpt(CURLOPT_CAINFO, $this->cainfo_path);
         }
     }
     public function setHeader()
     {
-        $this->setOpt(CURLOPT_HEADER, false);
+        if (count($this->headers) >= 1) {
+            $this->setOpt(CURLOPT_HTTPHEADER, $this->headers);
+        } else {
+            $this->setOpt(CURLOPT_HEADER, false);
+        }
     }
     public function setOpt($option, $value)
     {
@@ -92,10 +98,6 @@ class Curl
     {
         $this->beforeSendFunction = $callback;
     }
-    public function buildPostData($data)
-    {
-        # code...
-    }
     public function call()
     {
         $args = func_get_args();
@@ -107,6 +109,7 @@ class Curl
     }
     public function run()
     {
+        $this->setSSL();
         $this->call($this->beforeSendFunction);
         $this->rawResponse = curl_exec($this->curl);
         $this->curlErrorCode = curl_errno($this->curl);
@@ -117,19 +120,31 @@ class Curl
         $this->beforeSend($callback);
         $this->run();
     }
-    public function post($value = '')
+    public function post($url, $data)
     {
+        $this->setUrl($url);
         $this->setOpt(CURLOPT_CUSTOMREQUEST, 'POST');
         $this->setOpt(CURLOPT_POST, true);
-        $this->setOpt(CURLOPT_POSTFIELDS, $this->buildPostData($data));
-
-        return $this->run();
+        $this->setOpt(CURLOPT_POSTFIELDS, $data);
+        $this->run();
     }
     public function close()
     {
         if (is_resource($this->curl)) {
             curl_close($this->curl);
         }
+    }
+    public function outJson()
+    {
+        if ($this->rawResponse) {
+            $this->jsonData = json_decode($this->rawResponse, true);
+        }
+
+        return $this;
+    }
+    public function jsonGet($keyname = '')
+    {
+        return isset($this->jsonData[$keyname]) ? $this->jsonData[$keyname] : '';
     }
     /*
     private static function postXmlCurl(string $xml, string $url, $useCert = false, $second = 30)
