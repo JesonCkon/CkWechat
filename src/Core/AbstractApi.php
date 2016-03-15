@@ -14,7 +14,6 @@ abstract class AbstractApi
 {
     protected $http;
     protected $accessToken;
-    use Core\Singleton;
     public function getHttp()
     {
         if (is_null($this->http)) {
