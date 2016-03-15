@@ -5,28 +5,33 @@
  * Date: 16/3/8
  * Time: 16:59.
  */
-
 namespace CkWechat\Core;
 
 class Http
 {
     public $url;
     public $config;
-    public function __construct($url='', $params = array())
+    public function __construct($url = '', $params = array())
     {
         $this->url = self::buildApiUrl($url, $params);
+    }
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
     public function get()
     {
         # code...
     }
-    public function post($post_data = null)
+    public function post($post_data = null,$callback = null)
     {
-        
+        $curl = new Curl();
+        $curl->post($this->url, $post_data, $callback);
+        return $curl->rawResponse;
     }
     public static function buildApiUrl($url, $data = array())
     {
-        return $url . (empty($data) ? '' : '?' . http_build_query($data));
+        return $url.(empty($data) ? '' : '?'.http_build_query($data));
     }
     public static function http_build_multi_query($data, $key = null)
     {
