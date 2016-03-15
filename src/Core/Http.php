@@ -11,7 +11,8 @@ namespace CkWechat\Core;
 class Http
 {
     public $url;
-    public function __construct($url, $params = array())
+    public $config;
+    public function __construct($url='', $params = array())
     {
         $this->url = self::buildApiUrl($url, $params);
     }
@@ -21,7 +22,7 @@ class Http
     }
     public function post($post_data = null)
     {
-        # code...
+        
     }
     public static function buildApiUrl($url, $data = array())
     {

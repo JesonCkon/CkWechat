@@ -14,15 +14,12 @@ use CkWechat\Core\Config as Config;
 class Application extends Container
 {
     public static $_instance;
-    protected $config;
+    public $config;
     private $service_list = array(
       Service\CustomMenuService::class,
+      Service\RedEnvelopesService::class,
     );
-    private function __construct()
-    {
-        #TODO
-        $this->setServices();
-    }
+    private function __construct(){}
     public static function initialization()
     {
         if (!isset(self::$_instance)) {
@@ -47,5 +44,9 @@ class Application extends Container
         $service_obj->register($this);
 
         return $this;
+    }
+    public function run()
+    {
+        $this->setServices();
     }
 }
