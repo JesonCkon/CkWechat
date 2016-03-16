@@ -23,9 +23,21 @@ class Http
     {
         # code...
     }
-    public function post($post_data = null,$callback = null)
+    public function post($post_data = null, $callback = null)
     {
         $curl = new Curl();
+        $curl->post($this->url, $post_data, $callback);
+
+        return $curl->rawResponse;
+    }
+    public function sslPost($post_data = null, $callback = null)
+    {
+        $curl = new Curl();
+        $curl->is_ssl = $this->config->is_ssl;
+        $curl->useCert = $this->config->useCert;
+        $curl->sslcert_path = $this->config->sslcert_path;
+        $curl->sslkey_path = $this->config->sslkey_path;
+        $curl->cainfo_path = $this->config->cainfo_path;
         $curl->post($this->url, $post_data, $callback);
         return $curl->rawResponse;
     }

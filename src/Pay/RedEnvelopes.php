@@ -19,7 +19,7 @@ class RedEnvelopes extends AbstractApi
         $this->http->setUrl(ApiUrl::REDENVELOPES_SEND);
         $this->makeSendData($post_data);
         $xml = DataBase::toXml($this->send_data);
-        return $this->http->post($xml, $callback);
+        return $this->http->sslPost($xml, $callback);
     }
 
     public function makeSendData(array $params)
