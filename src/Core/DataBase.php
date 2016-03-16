@@ -12,7 +12,7 @@ class DataBase
     public static function toXml($data)
     {
         if (!is_array($data) || count($data) <= 0) {
-            throw new Exception('数组数据异常！');
+            throw new \Exception('数组数据异常！');
         }
 
         $xml = '<xml>';
