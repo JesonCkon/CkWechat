@@ -71,6 +71,11 @@ class DataBase
           {
               $str .= chr(mt_rand(33, 126));
           }
-          return $str;
+          return md5($str);
+    }
+    //商户订单号（每个订单号必须唯一） 组成：mch_id+yyyymmdd+10位一天内不能重复的数字。接口根据商户订单号支持重入，如出现超时可再调用。
+    public static function buildBillno($mch_id)
+    {
+        return $mch_id.date('Ymd', time()).(microtime(true)*1000);
     }
 }

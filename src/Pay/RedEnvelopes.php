@@ -32,7 +32,6 @@ class RedEnvelopes extends AbstractApi
     {
         $this->http->setUrl(ApiUrl::GETHBINFO);
         $this->makeQueryData($post_data);
-        $this->send_xml = DataBase::toXml($this->query_data);
         $this->query_xml = DataBase::toXml($this->query_data);
 
         return $this->http->sslPost($this->query_xml, $callback);

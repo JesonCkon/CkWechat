@@ -18,6 +18,8 @@ class Application extends Container
     private $service_list = array(
       Service\CustomMenuService::class,
       Service\RedEnvelopesService::class,
+      Service\CouponStockService::class,
+      Service\CompanyPaymentsService::class,
     );
     private function __construct(){}
     public static function initialization()
@@ -32,6 +34,7 @@ class Application extends Container
     public function setConfig(array $config)
     {
         $this->config = new Config($config);
+        return $this;
     }
     public function setServices()
     {

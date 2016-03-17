@@ -44,7 +44,14 @@ class ApiUrl
     const UPKFACCOUNTIMG='http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
 
     //商户api
+    //现金红包
     const SENDREDPACK = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
     const GETHBINFO = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo';
     const SENDGROUPREDPACK = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendgroupredpack';
+    //代金券
+    const QUERY_COUPON_STOCK = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/query_coupon_stock';
+    const SEND_COUPON = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/send_coupon';
+    //企业付款
+    const PROMOTION_TRANSFERS='https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
+
 }
