@@ -14,14 +14,18 @@ use CkWechat\Core\DataBase as DataBase;
 class RedEnvelopes extends AbstractApi
 {
     protected $send_data = array();
-    protected $send_xml = "";
+    protected $send_xml = '';
     protected $query_data = array();
-    protected $query_xml = "";
+    protected $query_xml = '';
+
+    protected $gsend_data = array();
+    protected $gsend_xml = '';
     public function send(array $post_data, $callback = null)
     {
         $this->http->setUrl(ApiUrl::SENDREDPACK);
         $this->makeSendData($post_data);
         $this->send_xml = DataBase::toXml($this->send_data);
+
         return $this->http->sslPost($this->send_xml, $callback);
     }
     public function query(array $post_data, $callback = null)
@@ -30,11 +34,25 @@ class RedEnvelopes extends AbstractApi
         $this->makeQueryData($post_data);
         $this->send_xml = DataBase::toXml($this->query_data);
         $this->query_xml = DataBase::toXml($this->query_data);
+
         return $this->http->sslPost($this->query_xml, $callback);
     }
     public function groupSend(array $post_data, $callback = null)
     {
-      # code...
+        $this->http->setUrl(ApiUrl::SENDGROUPREDPACK);
+        $this->send_data['amt_type'] = 'ALL_RAND';
+        $this->makeSendData($post_data);
+        $this->send_xml = DataBase::toXml($this->send_data);
+
+        return $this->http->sslPost($this->send_xml, $callback);
+    }
+    public function setCurlHeaderCallback($callback)
+    {
+        $this->http->curl->beforeSend($callback);
+    }
+    public function setCurlCompleteCallback($callback)
+    {
+        $this->http->curl->complete($callback);
     }
     public function makeSendData(array $params)
     {

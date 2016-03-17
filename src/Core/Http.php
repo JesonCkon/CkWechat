@@ -14,6 +14,7 @@ class Http
     public function __construct($url = '', $params = array())
     {
         $this->url = self::buildApiUrl($url, $params);
+        $this->setCurl();
     }
     public function setUrl($url)
     {
@@ -25,9 +26,12 @@ class Http
     }
     public function post($post_data = null, $callback = null)
     {
-        $curl = new Curl();
-        $curl->post($this->url, $post_data, $callback);
-        return $curl;
+        $this->curl->post($this->url, $post_data, $callback);
+        return $this->curl;
+    }
+    public function setCurl()
+    {
+        $this->curl = new Curl();
     }
     public function sslPost($post_data = null, $callback = null)
     {
