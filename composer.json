@@ -1,0 +1,23 @@
+{
+    "name": "kontem/ck-wechat",
+    "description": "微信公众号SDK(PHP)",
+    "license": "MIT",
+    "keywords": [
+      "wechat",
+      "weixin",
+      "weixin-sdk",
+      "sdk"
+    ],
+    "authors": [
+        {
+            "name": "Jeson.ckon",
+            "email": "ckontem@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "CkWechat\\": "src" }
+    },
+    "require": {
+      "php":">=5.4.0",
+    }
+}
