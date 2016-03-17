@@ -19,18 +19,22 @@ class RedEnvelopes extends AbstractApi
     protected $query_xml = "";
     public function send(array $post_data, $callback = null)
     {
-        $this->http->setUrl(ApiUrl::REDENVELOPES_SEND);
+        $this->http->setUrl(ApiUrl::SENDREDPACK);
         $this->makeSendData($post_data);
         $this->send_xml = DataBase::toXml($this->send_data);
         return $this->http->sslPost($this->send_xml, $callback);
     }
     public function query(array $post_data, $callback = null)
     {
-        $this->http->setUrl(ApiUrl::REDENVELOPES_QUERY);
+        $this->http->setUrl(ApiUrl::GETHBINFO);
         $this->makeQueryData($post_data);
         $this->send_xml = DataBase::toXml($this->query_data);
         $this->query_xml = DataBase::toXml($this->query_data);
         return $this->http->sslPost($this->query_xml, $callback);
+    }
+    public function groupSend(array $post_data, $callback = null)
+    {
+      # code...
     }
     public function makeSendData(array $params)
     {

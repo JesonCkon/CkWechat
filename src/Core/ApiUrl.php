@@ -44,6 +44,7 @@ class ApiUrl
     const UPKFACCOUNTIMG='http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
 
     //商户api
-    const REDENVELOPES_SEND = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
-    const REDENVELOPES_QUERY = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo';
+    const SENDREDPACK = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
+    const GETHBINFO = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo';
+    const SENDGROUPREDPACK = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendgroupredpack';
 }
