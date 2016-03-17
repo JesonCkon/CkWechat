@@ -27,8 +27,7 @@ class Http
     {
         $curl = new Curl();
         $curl->post($this->url, $post_data, $callback);
-
-        return $curl->rawResponse;
+        return $curl;
     }
     public function sslPost($post_data = null, $callback = null)
     {
@@ -39,7 +38,7 @@ class Http
         $curl->sslkey_path = $this->config->sslkey_path;
         $curl->cainfo_path = $this->config->cainfo_path;
         $curl->post($this->url, $post_data, $callback);
-        return $curl->rawResponse;
+        return $curl;
     }
     public static function buildApiUrl($url, $data = array())
     {

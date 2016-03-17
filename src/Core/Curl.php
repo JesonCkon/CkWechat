@@ -24,6 +24,7 @@ class Curl
     public $rawResponse = null;
     public $beforeSendFunction = null;
     public $completeFunction = null;
+    public $post_data;
 
     public function __construct()
     {
@@ -142,6 +143,7 @@ class Curl
     }
     public function post($url, $data, $callback = null)
     {
+        $this->post_data = $data;
         $this->setUrl($url);
         $this->setOpt(CURLOPT_CUSTOMREQUEST, 'POST');
         $this->setOpt(CURLOPT_POST, true);

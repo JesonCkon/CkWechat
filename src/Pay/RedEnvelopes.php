@@ -21,7 +21,10 @@ class RedEnvelopes extends AbstractApi
         $xml = DataBase::toXml($this->send_data);
         return $this->http->sslPost($xml, $callback);
     }
-
+    public function query(array $post_data, $callback = null)
+    {
+      # code...
+    }
     public function makeSendData(array $params)
     {
         $this->send_data = array_merge($this->send_data, $params);
@@ -29,6 +32,7 @@ class RedEnvelopes extends AbstractApi
         $this->send_data['mch_id'] = $this->config->mch_id;
         $this->send_data['mch_billno'] = $this->buildBillno();
         $this->send_data['sign'] = DataBase::wxMakeSign($this->send_data, $this->config->mch_key);
+        var_dump($this->send_data);
     }
     //商户订单号（每个订单号必须唯一） 组成：mch_id+yyyymmdd+10位一天内不能重复的数字。接口根据商户订单号支持重入，如出现超时可再调用。
     public function buildBillno()
