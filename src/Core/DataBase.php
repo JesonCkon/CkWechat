@@ -27,6 +27,16 @@ class DataBase
 
         return $xml;
     }
+    public static function xmlToArray($string = '')
+    {
+        libxml_use_internal_errors(true);
+        $result = simplexml_load_string($string, 'SimpleXMLElement', LIBXML_NOCDATA);
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
+    }
     public static function wxMakeSign($post_data, $key)
     {
         //签名步骤一：按字典序排序参数
@@ -53,5 +63,14 @@ class DataBase
         $buff = trim($buff, '&');
 
         return $buff;
+    }
+    public static function makeNonceStr($length=32)
+    {
+          $str = '';
+          for ($i = 0; $i < $length; $i++)
+          {
+              $str .= chr(mt_rand(33, 126));
+          }
+          return $str;
     }
 }

@@ -45,4 +45,5 @@ class ApiUrl
 
     //商户api
     const REDENVELOPES_SEND = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack';
+    const REDENVELOPES_QUERY = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo';
 }
