@@ -20,13 +20,16 @@ class Http
     {
         $this->url = $url;
     }
-    public function get()
+    public function get($post_data = null, $callback = null)
     {
-        # code...
+        $this->curl->get($this->url, $post_data, $callback);
+
+        return $this->curl;
     }
     public function post($post_data = null, $callback = null)
     {
         $this->curl->post($this->url, $post_data, $callback);
+
         return $this->curl;
     }
     public function setCurl()
@@ -42,6 +45,7 @@ class Http
         $curl->sslkey_path = $this->config->sslkey_path;
         $curl->cainfo_path = $this->config->cainfo_path;
         $curl->post($this->url, $post_data, $callback);
+
         return $curl;
     }
     public static function buildApiUrl($url, $data = array())

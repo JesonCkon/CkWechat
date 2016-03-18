@@ -20,6 +20,7 @@ class Application extends Container
       Service\RedEnvelopesService::class,
       Service\CouponStockService::class,
       Service\CompanyPaymentsService::class,
+      Service\FoundationService::class,
     );
     private function __construct(){}
     public static function initialization()
