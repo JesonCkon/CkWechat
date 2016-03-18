@@ -11,9 +11,11 @@ namespace CkWechat;
 use CkWechat\Core\Container as Container;
 use CkWechat\Core\Config as Config;
 
+/**
+ * @property Foundation\AccessToken $accessToken
+ */
 class Application extends Container
 {
-    public static $_instance;
     public $config;
     private $service_list = array(
       Service\CustomMenuService::class,
@@ -22,15 +24,9 @@ class Application extends Container
       Service\CompanyPaymentsService::class,
       Service\FoundationService::class,
     );
-    private function __construct(){}
-    public static function initialization()
-    {
-        if (!isset(self::$_instance)) {
-            $class_name = __CLASS__;
-            self::$_instance = new $class_name();
-        }
-
-        return self::$_instance;
+    public function __construct($config){
+        $this->setConfig($config);
+        $this->run();
     }
     public function setConfig(array $config)
     {
