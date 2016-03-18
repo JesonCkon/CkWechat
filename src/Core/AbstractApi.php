@@ -6,6 +6,8 @@
  * Time: 16:26.
  */
 namespace CkWechat\Core;
+use CkWechat\Plugins\Cache;
+
 
 abstract class AbstractApi
 {
@@ -21,11 +23,14 @@ abstract class AbstractApi
             if ($this->di->config instanceof Config) {
                 $this->config = $this->di->config;
             }
+            if ($this->di->cache) {
+                $this->cache = $this->di->cache;
+            }
         }
         $this->getHttp();
         $this->getApiUrl();
     }
-    public function getHttp()
+    private function getHttp()
     {
         if (is_null($this->http)) {
             $this->http = new Http();
@@ -34,7 +39,7 @@ abstract class AbstractApi
 
         return $this->http;
     }
-    public function getApiUrl()
+    private function getApiUrl()
     {
         if (is_null($this->api_url)) {
             $this->api_url = new ApiUrl();

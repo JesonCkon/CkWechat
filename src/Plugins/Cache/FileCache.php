@@ -23,14 +23,14 @@ class FileCache implements CacheInterface
         if (!empty($this->cache_path) && !is_dir($this->cache_path)) {
             mkdir($this->cache_path, 0755);
         } elseif (empty($this->cache_path)) {
-            $this->cache_path = '_wechat_cache';
+            $this->cache_path = getcwd().DIRECTORY_SEPARATOR.'_wechat_cache';
             is_dir($this->cache_path) or mkdir($this->cache_path, 0755);
         }
     }
     public function set($key, $value)
     {
         if (empty($key) || empty($value)) {
-            return false
+            return false;
         }
         $this->cache_file = $this->cache_path.DIRECTORY_SEPARATOR.$key;
         if (!is_writable(dirname($this->cache_file))) {
@@ -57,10 +57,23 @@ class FileCache implements CacheInterface
 
         $result = '';
         $this->cache_file = $this->cache_path.DIRECTORY_SEPARATOR.$key;
-        if (!empty($key) && file_exists($this->cache_file)) {
+        if (file_exists($this->cache_file)) {
             $result = file_get_contents($this->cache_file);
+
+            return $result;
         } else {
             return false;
         }
+    }
+    public function checkTimeOut($key = '')
+    {
+        $stat = stat($this->cache_path.DIRECTORY_SEPARATOR.$key);
+        $file_time = isset($stat['mtime']) ? $stat['mtime'] : $stat['atime'];
+        $check_time = $file_time + $this->cache_time;
+        if (time() > $check_time) {
+            return false;
+        }
+
+        return true;
     }
 }

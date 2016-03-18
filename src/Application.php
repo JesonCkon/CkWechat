@@ -5,11 +5,11 @@
  * Date: 16/3/8
  * Time: 17:09.
  */
-
 namespace CkWechat;
 
 use CkWechat\Core\Container as Container;
 use CkWechat\Core\Config as Config;
+use CkWechat\Plugins\Cache as CkCache;
 
 /**
  * @property Foundation\AccessToken $accessToken
@@ -17,6 +17,7 @@ use CkWechat\Core\Config as Config;
 class Application extends Container
 {
     public $config;
+    public $cache;
     private $service_list = array(
       Service\CustomMenuService::class,
       Service\RedEnvelopesService::class,
@@ -24,14 +25,29 @@ class Application extends Container
       Service\CompanyPaymentsService::class,
       Service\FoundationService::class,
     );
-    public function __construct($config){
+    public function __construct($config)
+    {
         $this->setConfig($config);
+        $this->setCache();
         $this->run();
     }
     public function setConfig(array $config)
     {
         $this->config = new Config($config);
+
         return $this;
+    }
+    public function setCache()
+    {
+        if (!isset($this->config->cache_type)) {
+            $cache_config = array();
+            $cache_config['cache_path'] = $this->config->cache_path;
+            $cache_config['cache_time'] = $this->config->cache_time;
+            $this->cache = new CkCache\FileCache($cache_config);
+            //default set file cache system
+        } elseif ($this->config->cache_type == 'redis') {
+            # code...
+        }
     }
     public function setServices()
     {

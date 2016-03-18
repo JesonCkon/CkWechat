@@ -9,6 +9,24 @@ namespace CkWechat\Core;
 
 class DataBase
 {
+    public static function toWxJson($data, $options = JSON_UNESCAPED_UNICODE)
+    {
+        if (is_string($data)) {
+            json_decode($data);
+            if ((json_last_error() == JSON_ERROR_NONE) == false) {
+                $data = json_encode($data, $options);
+            } else {
+                return false;
+            }
+        } elseif (is_array($data)) {
+            $data = json_encode($data, $options);
+        } else {
+            return false;
+        }
+
+        return $data;
+    }
+
     public static function toXml($data)
     {
         if (!is_array($data) || count($data) <= 0) {
@@ -64,18 +82,18 @@ class DataBase
 
         return $buff;
     }
-    public static function makeNonceStr($length=32)
+    public static function makeNonceStr($length = 32)
     {
-          $str = '';
-          for ($i = 0; $i < $length; $i++)
-          {
-              $str .= chr(mt_rand(33, 126));
-          }
-          return md5($str);
+        $str = '';
+        for ($i = 0; $i < $length; ++$i) {
+            $str .= chr(mt_rand(33, 126));
+        }
+
+        return md5($str);
     }
     //商户订单号（每个订单号必须唯一） 组成：mch_id+yyyymmdd+10位一天内不能重复的数字。接口根据商户订单号支持重入，如出现超时可再调用。
     public static function buildBillno($mch_id)
     {
-        return $mch_id.date('Ymd', time()).(microtime(true)*1000);
+        return $mch_id.date('Ymd', time()).(microtime(true) * 1000);
     }
 }
