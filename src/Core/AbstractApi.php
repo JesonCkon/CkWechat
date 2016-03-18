@@ -13,7 +13,7 @@ abstract class AbstractApi
 {
     protected $http;
     protected $api_url;
-    protected $accessToken;
+    protected $access_token;
     protected $di;
     public function __construct()
     {
@@ -25,6 +25,9 @@ abstract class AbstractApi
             }
             if ($this->di->cache) {
                 $this->cache = $this->di->cache;
+            }
+            if ($this->di->access_token) {
+                $this->access_token = $this->di->access_token;
             }
         }
         $this->getHttp();

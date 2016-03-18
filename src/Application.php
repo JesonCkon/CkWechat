@@ -18,6 +18,7 @@ class Application extends Container
 {
     public $config;
     public $cache;
+    public $access_token = '';
     private $service_list = array(
       Service\CustomMenuService::class,
       Service\RedEnvelopesService::class,
@@ -30,6 +31,7 @@ class Application extends Container
         $this->setConfig($config);
         $this->setCache();
         $this->run();
+        $this->access_token = $this->accessToken->get();
     }
     public function setConfig(array $config)
     {

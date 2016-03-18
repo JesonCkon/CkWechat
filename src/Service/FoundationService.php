@@ -9,6 +9,7 @@
 namespace CkWechat\Service;
 use CkWechat\Core\Container as Container;
 use CkWechat\Foundation;
+use CkWechat\WxBackIps;
 
 class FoundationService implements ServiceInterface
 {
@@ -16,6 +17,9 @@ class FoundationService implements ServiceInterface
     {
         $obj->accessToken = function ($obj) {
           return new Foundation\AccessToken($obj);
+        };
+        $obj->wxBackIps = function ($obj) {
+          return new Foundation\WxBackIps($obj);
         };
     }
 }
