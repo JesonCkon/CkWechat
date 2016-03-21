@@ -26,7 +26,16 @@ class DataBase
 
         return $data;
     }
-
+    public static function checkJson($string = '')
+    {
+        $res = null;
+        $res = json_decode($string);
+        if (json_last_error() == JSON_ERROR_NONE) {
+            return $res;
+        } else {
+            return false;
+        }
+    }
     public static function toXml($data)
     {
         if (!is_array($data) || count($data) <= 0) {
@@ -52,6 +61,7 @@ class DataBase
         if (!$result) {
             return false;
         }
+        $result = json_decode(json_encode($result), true);
 
         return $result;
     }
