@@ -22,7 +22,7 @@ class Request
         if (is_string($value)) {
             return isset($_GET[$value]) ? $_GET[$value] : null;
         } elseif (is_array($value)) {
-            return array_intersect_key($_GET, $value);
+            return array_intersect_key($_GET, array_flip($value));
         } else {
             return;
         }
