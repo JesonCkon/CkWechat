@@ -49,10 +49,10 @@ class Container
         }
         if (isset($this->s[$k])) {
             #return $this->s[$k]($this);
-            $temp_cache_obj = $this->getCache($k);
+            $temp_cache_obj = $this->_getCache($k);
             if ($temp_cache_obj == false) {
                 $obj = $this->s[$k]($this);
-                $this->setCache($k, $obj);
+                $this->_setCache($k, $obj);
 
                 return $obj;
             } else {
@@ -71,7 +71,7 @@ class Container
      *
      * @return [type] [description]
      */
-    public function getCache($key)
+    private function _getCache($key)
     {
         if (isset($this->cache_list[$key])) {
             return $this->cache_list[$key];
@@ -87,7 +87,7 @@ class Container
      * @param [type] $key   [description]
      * @param [type] $value [description]
      */
-    public function setCache($key, $value)
+    private function _setCache($key, $value)
     {
         $this->cache_list[$key] = $value;
 

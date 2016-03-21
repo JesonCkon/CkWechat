@@ -25,6 +25,7 @@ class Application extends Container
       Service\CouponStockService::class,
       Service\CompanyPaymentsService::class,
       Service\FoundationService::class,
+      Service\NormalMessageService::class,
     );
     public function __construct($config)
     {

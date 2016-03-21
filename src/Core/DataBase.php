@@ -106,4 +106,13 @@ class DataBase
     {
         return $mch_id.date('Ymd', time()).(microtime(true) * 1000);
     }
+    public function outString($data,$out_type='string')
+    {
+        if (is_string($data) && $out_type=='string') {
+            ob_clean();
+            header('Content-Type: text/html; charset=utf-8');
+            echo $data;
+            exit;
+        }
+    }
 }
