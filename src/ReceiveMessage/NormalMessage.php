@@ -20,11 +20,9 @@ class NormalMessage extends AbstractApi
             DataBase::outString($echostr);
         }
     }
-    public function text($message, $callback=null)
+    public function text($message, $callback = null)
     {
-        #var_dump($this->checkXmlByKey('Content','this is a test'));
-        #$this->post_data = $this->checkXmlByKey('Content',$message);
-        $this->post_data = $this->checkXmlByKey('Content','this is a test');
+        $this->post_data = $this->checkXmlByKey('Content', $message);
         $this->call($callback);
     }
 }
