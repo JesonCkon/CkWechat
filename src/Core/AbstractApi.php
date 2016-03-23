@@ -61,7 +61,7 @@ abstract class AbstractApi
 
         if (is_callable($function)) {
             array_unshift($args, $this);
-            call_user_func_array($function, $args);
+            call_user_func_array($function->bindTo($this), $args);
         }
     }
     public static function getFuncParameters($function)

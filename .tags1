@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AbstractApi	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^abstract class AbstractApi$/;"	class	line:12
+http	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    protected $http;$/;"	variable	line:14
+api_url	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    protected $api_url;$/;"	variable	line:15
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    protected $access_token;$/;"	variable	line:16
+di	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    protected $di;$/;"	variable	line:17
+__construct	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function __construct()$/;"	function	line:18
+args	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args = func_get_args();$/;"	variable	line:20
+di	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->di = $args[0];$/;"	variable	line:22
+config	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->config = $this->di->config;$/;"	variable	line:24
+cache	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->cache = $this->di->cache;$/;"	variable	line:27
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->access_token = $this->di->access_token;$/;"	variable	line:30
+getHttp	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    private function getHttp()$/;"	function	line:36
+http	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->http = new Http();$/;"	variable	line:39
+getApiUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    private function getApiUrl()$/;"	function	line:45
+api_url	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->api_url = new ApiUrl();$/;"	variable	line:48
+call	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function call()$/;"	function	line:53
+args	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args = func_get_args();$/;"	variable	line:55
+args_count	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args_count = func_num_args();$/;"	variable	line:56
+function	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $function = array_shift($args);$/;"	variable	line:57
+closures_parameters	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $closures_parameters = self::getFuncParameters($function);$/;"	variable	line:58
+closures_count	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $closures_count = !empty($closures_parameters)$/;"	variable	line:59
+getFuncParameters	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public static function getFuncParameters($function)$/;"	function	line:67
+parameters_list	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $parameters_list = array();$/;"	variable	line:69
+reflection	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $reflection = new \\ReflectionFunction($function);$/;"	variable	line:70
+arguments	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $arguments = $reflection->getParameters();$/;"	variable	line:71
+key	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            foreach ($arguments as $key => $value) {$/;"	variable	line:73
