@@ -15,9 +15,9 @@ trait Event
     {
         $req = new Request();
         $result = $req->getParams(array('signature', 'timestamp', 'nonce', 'echostr'));
-        $signature = $result['signature'];
-        $timestamp = $result['timestamp'];
-        $nonce = $result['nonce'];
+        $signature = isset($result['signature']) ? $result['signature'] : null;
+        $timestamp = isset($result['timestamp']) ? $result['timestamp'] : null;
+        $nonce = isset($result['nonce']) ? $result['nonce'] : null;
         $token = $this->config->token;
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
@@ -25,6 +25,16 @@ trait Event
         $tmpStr = sha1($tmpStr);
         if ($tmpStr == $signature) {
             return isset($result['echostr']) ? $result['echostr'] : false;
+        } else {
+            return false;
+        }
+    }
+    public function checkXmlByKey($key, $value)
+    {
+        $req = new Request();
+        $key_val = $req->postParams($key);
+        if ($key_val == $value) {
+            return $req->getPostData();
         } else {
             return false;
         }
