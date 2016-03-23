@@ -6,8 +6,8 @@
  * Time: 16:26.
  */
 namespace CkWechat\Core;
-use CkWechat\Plugins\Cache;
 
+use CkWechat\Plugins\Cache;
 
 abstract class AbstractApi
 {
@@ -18,7 +18,7 @@ abstract class AbstractApi
     public function __construct()
     {
         $args = func_get_args();
-        if (count($args)>0 && ($args[0] instanceof Container)) {
+        if (count($args) > 0 && ($args[0] instanceof Container)) {
             $this->di = $args[0];
             if ($this->di->config instanceof Config) {
                 $this->config = $this->di->config;
@@ -53,10 +53,28 @@ abstract class AbstractApi
     public function call()
     {
         $args = func_get_args();
+        $args_count = func_num_args();
         $function = array_shift($args);
+        $closures_parameters = self::getFuncParameters($function);
+        $closures_count = !empty($closures_parameters)
+        ? count($closures_parameters) : 0;
+
         if (is_callable($function)) {
             array_unshift($args, $this);
             call_user_func_array($function, $args);
         }
+    }
+    public static function getFuncParameters($function)
+    {
+        $parameters_list = array();
+        $reflection = new \ReflectionFunction($function);
+        $arguments = $reflection->getParameters();
+        if ($arguments) {
+            foreach ($arguments as $key => $value) {
+                $parameters_list[] = $value->name;
+            }
+        }
+
+        return $parameters_list;
     }
 }
