@@ -17,6 +17,10 @@ class Request
     private $_isTranslator = false;
     public $_methodParam = '_method';
 
+    public function getPostData()
+    {
+        return $this->_postData;
+    }
     public function getParams($value = '')
     {
         if (is_string($value)) {
