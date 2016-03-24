@@ -16,13 +16,17 @@ class Http
         $this->url = self::buildApiUrl($url, $params);
         $this->setCurl();
     }
-    public function setUrl($url)
+    public function setUrl($url, $params = array())
     {
-        $this->url = $url;
+        if (!empty($params)) {
+            $this->url = self::buildApiUrl($url, $params);
+        } else {
+            $this->url = $url;
+        }
     }
-    public function get($post_data = null, $callback = null)
+    public function get($url_data = null, $callback = null)
     {
-        $this->curl->get($this->url, $post_data, $callback);
+        $this->curl->get($this->url, $url_data, $callback);
 
         return $this->curl;
     }
