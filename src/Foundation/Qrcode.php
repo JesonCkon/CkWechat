@@ -36,7 +36,7 @@ class Qrcode extends AbstractApi
     }
     public function qr_limit_scene($scene, $callback = null)
     {
-        if (is_numeric($scene) == true) {
+        if (is_int($scene) == true) {
             $scene = ($scene >= 100000) ? 100000 : $scene;
             $scene = ($scene < 1) ? 1 : $scene;
             $this->post_data['action_info'] = array('scene' => array('scene_id' => $scene));
@@ -54,6 +54,7 @@ class Qrcode extends AbstractApi
 
         $ch = $this->http->post($this->post_json, $callback);
         $json_data = json_decode($ch->rawResponse, true);
+        $json_data['post_data'] = $this->post_json;
         $json_data['qrcode_url'] = $this->showQrcode($json_data['ticket']);
         $json_data['qrcode_surl'] = $this->toShortUrl($json_data['qrcode_url']);
 
