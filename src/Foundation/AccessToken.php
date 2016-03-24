@@ -26,9 +26,10 @@ class AccessToken extends AbstractApi
 
             return $access_token;
         }
+
         return $is_cache;
     }
-    private function getToken()
+    private function getToken($callback = null)
     {
         $this->http->setUrl(ApiUrl::ACCESSTOKEN);
         $this->makeTokenData();
