@@ -26,6 +26,7 @@ class Application extends Container
       Service\CompanyPaymentsService::class,
       Service\FoundationService::class,
       Service\NormalMessageService::class,
+      Service\QrcodeService::class,
     );
     public function __construct($config)
     {
