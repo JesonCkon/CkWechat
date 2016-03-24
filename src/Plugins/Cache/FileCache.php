@@ -35,7 +35,7 @@ class FileCache implements CacheInterface
         $this->cache_file = $this->cache_path.DIRECTORY_SEPARATOR.$key;
         if (!is_writable(dirname($this->cache_file))) {
             #TODO
-          echo '缓存文件写入失败';
+            echo '缓存文件写入失败';
         } else {
             $len = file_put_contents($this->cache_file, $value);
             if (strlen($value) == $len) {

@@ -23,6 +23,10 @@ class NormalMessage extends AbstractApi
     public function text($message, $callback = null)
     {
         $this->post_data = $this->checkXmlByKey('Content', $message);
-        $this->call($callback);
+        if ($this->post_data == false) {
+            //TODO
+        } else {
+            $this->call($callback);
+        }
     }
 }
