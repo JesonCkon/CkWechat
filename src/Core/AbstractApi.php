@@ -11,10 +11,10 @@ use CkWechat\Plugins\Cache;
 
 abstract class AbstractApi
 {
-    protected $http;
-    protected $api_url;
-    protected $access_token;
-    protected $di;
+    public $http;
+    public $api_url;
+    public $access_token;
+    public $di;
     public function __construct()
     {
         $args = func_get_args();
