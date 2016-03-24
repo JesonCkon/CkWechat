@@ -42,6 +42,10 @@ class ApiUrl
     const UPDATEKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/update';
     const DELKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/del';
     const UPKFACCOUNTIMG='http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
+    //二维码
+    const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';
+    const SHOWQRCODE = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
+    const SHORTURL = 'https://api.weixin.qq.com/cgi-bin/shorturl';
 
     //商户api
     //现金红包
