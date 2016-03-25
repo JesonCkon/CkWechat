@@ -40,16 +40,17 @@ class Qrcode extends AbstractApi
             $scene = ($scene >= 100000) ? 100000 : $scene;
             $scene = ($scene < 1) ? 1 : $scene;
             $this->post_data['action_info'] = array('scene' => array('scene_id' => $scene));
+            $this->post_data['action_name'] = 'QR_LIMIT_SCENE';
         }
         if (is_string($scene) == true) {
             if (strlen((string) $scene) > 64) {
                 #TODO
             }
             $this->post_data['action_info'] = array('scene' => array('scene_str' => $scene));
+            $this->post_data['action_name'] = 'QR_LIMIT_STR_SCENE';
         }
         $this->http->setUrl(ApiUrl::QRCODE_CREATE, array('access_token' => $this->di->access_token));
         $this->post_data['access_token'] = $this->di->access_token;
-        $this->post_data['action_name'] = 'QR_LIMIT_SCENE';
         $this->post_json = DataBase::toWxJson($this->post_data);
 
         $ch = $this->http->post($this->post_json, $callback);
