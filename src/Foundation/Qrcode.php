@@ -31,6 +31,7 @@ class Qrcode extends AbstractApi
         $json_data = json_decode($ch->rawResponse, true);
         $json_data['qrcode_url'] = $this->showQrcode($json_data['ticket']);
         $json_data['qrcode_surl'] = $this->toShortUrl($json_data['qrcode_url']);
+        //$json_data['access_token'] = $this->di->access_token;
 
         return $json_data;
     }
@@ -58,6 +59,7 @@ class Qrcode extends AbstractApi
         $json_data['post_data'] = $this->post_json;
         $json_data['qrcode_url'] = $this->showQrcode($json_data['ticket']);
         $json_data['qrcode_surl'] = $this->toShortUrl($json_data['qrcode_url']);
+        $json_data['access_token'] = $this->di->access_token;
 
         return $json_data;
     }

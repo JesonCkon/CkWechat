@@ -4,21 +4,27 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Application	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^class Application extends Container$/;"	class	line:17
-config	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $config;$/;"	variable	line:19
-cache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $cache;$/;"	variable	line:20
-access_token	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $access_token = '';$/;"	variable	line:21
-access_token	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $access_token = '';$/;"	variable	line:21
-service_list	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    \/*private $service_list = array($/;"	variable	line:22
-service_list	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    private $service_list = array($/;"	variable	line:31
-service_list	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    private $service_list = array($/;"	variable	line:31
-__construct	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function __construct($config)$/;"	function	line:40
-access_token	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^        $this->access_token = $this->accessToken->get();$/;"	variable	line:45
-setConfig	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setConfig(array $config)$/;"	function	line:47
-config	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^        $this->config = new Config($config);$/;"	variable	line:49
-setCache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setCache()$/;"	function	line:53
-cache_config	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^            $cache_config = array();$/;"	variable	line:56
-cache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^            $this->cache = new CkCache\\FileCache($cache_config);$/;"	variable	line:59
-setServices	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setServices()$/;"	function	line:65
-register	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function register($service_obj)$/;"	function	line:71
-run	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function run()$/;"	function	line:77
+Qrcode	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^class Qrcode extends AbstractApi$/;"	class	line:14
+post_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    protected $post_data = array();$/;"	variable	line:16
+post_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    protected $post_data = array();$/;"	variable	line:16
+post_json	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    protected $post_json = '';$/;"	variable	line:17
+post_json	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    protected $post_json = '';$/;"	variable	line:17
+qr_scene	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function qr_scene($scene_id = 0, $expire_seconds = 86400, $callback = null)$/;"	function	line:18
+expire_seconds	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function qr_scene($scene_id = 0, $expire_seconds = 86400, $callback = null)$/;"	variable	line:18
+expire_seconds	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $expire_seconds = ($expire_seconds >= 604800) ? 604800 : $expire_seconds;$/;"	variable	line:20
+post_json	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $this->post_json = DataBase::toWxJson($this->post_data);$/;"	variable	line:28
+ch	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $ch = $this->http->post($this->post_json, $callback);$/;"	variable	line:30
+json_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $json_data = json_decode($ch->rawResponse, true);$/;"	variable	line:31
+qr_limit_scene	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function qr_limit_scene($scene, $callback = null)$/;"	function	line:38
+callback	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function qr_limit_scene($scene, $callback = null)$/;"	variable	line:38
+scene	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^            $scene = ($scene >= 100000) ? 100000 : $scene;$/;"	variable	line:41
+scene	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^            $scene = ($scene < 1) ? 1 : $scene;$/;"	variable	line:42
+post_json	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $this->post_json = DataBase::toWxJson($this->post_data);$/;"	variable	line:55
+ch	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $ch = $this->http->post($this->post_json, $callback);$/;"	variable	line:57
+json_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $json_data = json_decode($ch->rawResponse, true);$/;"	variable	line:58
+toShortUrl	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function toShortUrl($url, $callback = null)$/;"	function	line:66
+callback	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function toShortUrl($url, $callback = null)$/;"	variable	line:66
+post_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $this->post_data = array();$/;"	variable	line:69
+ch	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $ch = $this->http->post(DataBase::toWxJson($this->post_data, JSON_UNESCAPED_SLASHES), $callback);$/;"	variable	line:72
+json_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $json_data = json_decode($ch->rawResponse, true);$/;"	variable	line:73
+showQrcode	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function showQrcode($ticket)$/;"	function	line:77

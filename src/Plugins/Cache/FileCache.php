@@ -57,7 +57,7 @@ class FileCache implements CacheInterface
 
         $result = '';
         $this->cache_file = $this->cache_path.DIRECTORY_SEPARATOR.$key;
-        if (file_exists($this->cache_file)) {
+        if (file_exists($this->cache_file) && $this->checkTimeOut($key)) {
             $result = file_get_contents($this->cache_file);
 
             return $result;

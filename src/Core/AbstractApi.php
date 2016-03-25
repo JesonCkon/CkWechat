@@ -28,6 +28,7 @@ abstract class AbstractApi
             }
             if ($this->di->access_token) {
                 $this->access_token = $this->di->access_token;
+                var_dump($this->di->access_token);
             }
         }
         $this->getHttp();
