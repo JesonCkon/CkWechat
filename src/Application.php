@@ -19,7 +19,7 @@ class Application extends Container
     public $config;
     public $cache;
     public $access_token = '';
-    private $service_list = array(
+    /*private $service_list = array(
       Service\CustomMenuService::class,
       Service\RedEnvelopesService::class,
       Service\CouponStockService::class,
@@ -27,6 +27,15 @@ class Application extends Container
       Service\FoundationService::class,
       Service\NormalMessageService::class,
       Service\QrcodeService::class,
+    );*/
+    private $service_list = array(
+      'CkWechat\Service\CustomMenuService',
+      'CkWechat\Service\RedEnvelopesService',
+      'CkWechat\Service\CouponStockService',
+      'CkWechat\Service\CompanyPaymentsService',
+      'CkWechat\Service\FoundationService',
+      'CkWechat\Service\NormalMessageService',
+      'CkWechat\Service\QrcodeService',
     );
     public function __construct($config)
     {

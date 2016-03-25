@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Application	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^class Application extends Container$/;"	class	line:17
+config	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $config;$/;"	variable	line:19
+cache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $cache;$/;"	variable	line:20
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $access_token = '';$/;"	variable	line:21
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public $access_token = '';$/;"	variable	line:21
+service_list	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    \/*private $service_list = array($/;"	variable	line:22
+service_list	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    private $service_list = array($/;"	variable	line:31
+service_list	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    private $service_list = array($/;"	variable	line:31
+__construct	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function __construct($config)$/;"	function	line:40
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^        $this->access_token = $this->accessToken->get();$/;"	variable	line:45
+setConfig	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setConfig(array $config)$/;"	function	line:47
+config	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^        $this->config = new Config($config);$/;"	variable	line:49
+setCache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setCache()$/;"	function	line:53
+cache_config	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^            $cache_config = array();$/;"	variable	line:56
+cache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^            $this->cache = new CkCache\\FileCache($cache_config);$/;"	variable	line:59
+setServices	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setServices()$/;"	function	line:65
+register	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function register($service_obj)$/;"	function	line:71
+run	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function run()$/;"	function	line:77

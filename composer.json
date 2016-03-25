@@ -17,6 +17,7 @@
     "autoload": {
         "psr-4": { "CkWechat\\": "src" }
     },
+    "include-path": ["src/Service"],
     "require": {
       "php":">=5.4.0"
     }
