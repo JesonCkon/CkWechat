@@ -11,10 +11,13 @@ use CkWechat\Core\Request as Request;
 
 trait Event
 {
+    public $req = '';
+    public function __construct(){
+        $this->request = new Request();
+    }
     public function checkSignature()
     {
-        $req = new Request();
-        $result = $req->getParams(array('signature', 'timestamp', 'nonce', 'echostr'));
+        $result = $this->request->getParams(array('signature', 'timestamp', 'nonce', 'echostr'));
         $signature = isset($result['signature']) ? $result['signature'] : null;
         $timestamp = isset($result['timestamp']) ? $result['timestamp'] : null;
         $nonce = isset($result['nonce']) ? $result['nonce'] : null;
@@ -31,8 +34,7 @@ trait Event
     }
     public function checkXmlByKey($key, $value)
     {
-        $req = new Request();
-        $key_val = $req->postParams($key);
+        $key_val = $this->request->postParams($key);
         if ($key_val == $value) {
             return $req->getPostData();
         } else {

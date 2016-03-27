@@ -14,10 +14,10 @@ use CkWechat\Core\DataBase as DataBase;
 class Menu extends AbstractApi
 {
     public $button_data = array();
-    public function addButton($menu_data)
+    public function addButton($menu_data, $callback = null)
     {
         if (!isset($menu_data['type']) || !isset($menu_data['name'])) {
-
+            
         }
         $this->button_data[] = $menu_data;
     }

@@ -26,6 +26,9 @@ class NormalMessage extends AbstractApi
         if ($this->post_data == false) {
             //TODO
         } else {
+            if ($this->request->postParams('MsgType') == 'text') {
+                # code...
+            }
             $this->call($callback);
         }
     }
