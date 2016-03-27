@@ -3,11 +3,9 @@
  * Created by PhpStorm.
  * User: kontem
  * Date: 16/3/15
- * Time: 15:56
+ * Time: 15:56.
  */
-
 namespace CkWechat\Core;
-
 
 class ApiUrl
 {
@@ -19,6 +17,7 @@ class ApiUrl
     const CREATEMENU = 'https://api.weixin.qq.com/cgi-bin/menu/create';
     const GETMENU = 'https://api.weixin.qq.com/cgi-bin/menu/get';
     const DELETEMENU = 'https://api.weixin.qq.com/cgi-bin/menu/delete';
+    const GET_CURRENT_SELFMENU_INFO = 'https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info';
 
     //user account
     const GETUSERS = 'https://api.weixin.qq.com/cgi-bin/user/get';
@@ -41,7 +40,7 @@ class ApiUrl
     const GETKFACCOUNT = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist';
     const UPDATEKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/update';
     const DELKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/del';
-    const UPKFACCOUNTIMG='http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
+    const UPKFACCOUNTIMG = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
     //二维码
     const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';
     const SHOWQRCODE = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
@@ -56,6 +55,5 @@ class ApiUrl
     const QUERY_COUPON_STOCK = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/query_coupon_stock';
     const SEND_COUPON = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/send_coupon';
     //企业付款
-    const PROMOTION_TRANSFERS='https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
-
+    const PROMOTION_TRANSFERS = 'https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers';
 }

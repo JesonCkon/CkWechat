@@ -21,7 +21,7 @@ class Qrcode extends AbstractApi
         if (is_numeric($scene_id) == false || strlen((string) $scene_id) > 32) {
             return false;
         }
-        $this->http->setUrl(ApiUrl::QRCODE_CREATE, array('access_token' => $this->di->access_token));
+        $this->setTokenUrl(ApiUrl::QRCODE_CREATE);
         $this->post_data['action_name'] = 'QR_SCENE';
         $this->post_data['expire_seconds'] = $expire_seconds;
         $this->post_data['action_info'] = array('scene' => array('scene_id' => $scene_id));
@@ -50,7 +50,7 @@ class Qrcode extends AbstractApi
             $this->post_data['action_info'] = array('scene' => array('scene_str' => $scene));
             $this->post_data['action_name'] = 'QR_LIMIT_STR_SCENE';
         }
-        $this->http->setUrl(ApiUrl::QRCODE_CREATE, array('access_token' => $this->di->access_token));
+        $this->setTokenUrl(ApiUrl::QRCODE_CREATE);
         $this->post_data['access_token'] = $this->di->access_token;
         $this->post_json = DataBase::toWxJson($this->post_data);
 
@@ -65,7 +65,7 @@ class Qrcode extends AbstractApi
     }
     public function toShortUrl($url, $callback = null)
     {
-        $this->http->setUrl(ApiUrl::SHORTURL, array('access_token' => $this->di->access_token));
+        $this->setTokenUrl(ApiUrl::SHORTURL);
         $this->post_data = array();
         $this->post_data['action'] = 'long2short';
         $this->post_data['long_url'] = $url;

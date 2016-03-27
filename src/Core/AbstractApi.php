@@ -28,7 +28,6 @@ abstract class AbstractApi
             }
             if ($this->di->access_token) {
                 $this->access_token = $this->di->access_token;
-                var_dump($this->di->access_token);
             }
         }
         $this->getHttp();
@@ -64,6 +63,11 @@ abstract class AbstractApi
             array_unshift($args, $this);
             call_user_func_array($function->bindTo($this), $args);
         }
+    }
+    public function setTokenUrl($url, $params = null)
+    {
+        $params['access_token'] = $this->access_token;
+        $this->http->setUrl($url, $params);
     }
     public static function getFuncParameters($function)
     {

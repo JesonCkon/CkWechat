@@ -18,32 +18,6 @@ cache	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    
 setServices	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function setServices()$/;"	function	line:65
 register	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function register($service_obj)$/;"	function	line:71
 run	/Users/kontem/workspace/github_project/CkWechat/src/Application.php	/^    public function run()$/;"	function	line:77
-AbstractApi	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^abstract class AbstractApi$/;"	class	line:12
-http	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $http;$/;"	variable	line:14
-api_url	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $api_url;$/;"	variable	line:15
-access_token	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $access_token;$/;"	variable	line:16
-di	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $di;$/;"	variable	line:17
-__construct	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function __construct()$/;"	function	line:18
-args	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args = func_get_args();$/;"	variable	line:20
-di	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->di = $args[0];$/;"	variable	line:22
-config	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->config = $this->di->config;$/;"	variable	line:24
-cache	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->cache = $this->di->cache;$/;"	variable	line:27
-access_token	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->access_token = $this->di->access_token;$/;"	variable	line:30
-getHttp	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    private function getHttp()$/;"	function	line:37
-http	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->http = new Http();$/;"	variable	line:40
-getApiUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    private function getApiUrl()$/;"	function	line:46
-api_url	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->api_url = new ApiUrl();$/;"	variable	line:49
-call	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function call()$/;"	function	line:54
-args	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args = func_get_args();$/;"	variable	line:56
-args_count	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args_count = func_num_args();$/;"	variable	line:57
-function	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $function = array_shift($args);$/;"	variable	line:58
-closures_parameters	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $closures_parameters = self::getFuncParameters($function);$/;"	variable	line:59
-closures_count	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $closures_count = !empty($closures_parameters)$/;"	variable	line:60
-getFuncParameters	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public static function getFuncParameters($function)$/;"	function	line:68
-parameters_list	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $parameters_list = array();$/;"	variable	line:70
-reflection	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $reflection = new \\ReflectionFunction($function);$/;"	variable	line:71
-arguments	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $arguments = $reflection->getParameters();$/;"	variable	line:72
-key	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            foreach ($arguments as $key => $value) {$/;"	variable	line:74
 AccessToken	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/AccessToken.php	/^class AccessToken extends AbstractApi$/;"	class	line:13
 get_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/AccessToken.php	/^    protected $get_data = array();$/;"	variable	line:15
 get_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/AccessToken.php	/^    protected $get_data = array();$/;"	variable	line:15
@@ -81,11 +55,64 @@ checkTimeOut	/Users/kontem/workspace/github_project/CkWechat/src/Plugins/Cache/F
 stat	/Users/kontem/workspace/github_project/CkWechat/src/Plugins/Cache/FileCache.php	/^        $stat = stat($this->cache_path.DIRECTORY_SEPARATOR.$key);$/;"	variable	line:70
 file_time	/Users/kontem/workspace/github_project/CkWechat/src/Plugins/Cache/FileCache.php	/^        $file_time = isset($stat['mtime']) ? $stat['mtime'] : $stat['atime'];$/;"	variable	line:71
 check_time	/Users/kontem/workspace/github_project/CkWechat/src/Plugins/Cache/FileCache.php	/^        $check_time = $file_time + $this->cache_time;$/;"	variable	line:72
-app_id	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app_id = 'wx581a16fa4192ca31';$/;"	variable	line:7
-app_secret	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app_secret = 'b0616223f99423a233ac79debb5e8f63';$/;"	variable	line:9
-config	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$config = array($/;"	variable	line:14
-app	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app = new CkWechat\\Application($config);$/;"	variable	line:29
-expire_seconds	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^\/\/$scene_id = 0, $expire_seconds = 86400$/;"	variable	line:41
+ApiUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/ApiUrl.php	/^class ApiUrl$/;"	class	line:10
+Http	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^class Http$/;"	class	line:10
+url	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public $url;$/;"	variable	line:12
+config	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public $config;$/;"	variable	line:13
+__construct	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function __construct($url = '', $params = array())$/;"	function	line:14
+params	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function __construct($url = '', $params = array())$/;"	variable	line:14
+url	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^        $this->url = self::buildApiUrl($url, $params);$/;"	variable	line:16
+setUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function setUrl($url, $params = array())$/;"	function	line:19
+params	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function setUrl($url, $params = array())$/;"	variable	line:19
+url	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^            $this->url = self::buildApiUrl($url, $params);$/;"	variable	line:22
+url	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^            $this->url = $url;$/;"	variable	line:24
+get	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function get($url_data = null, $callback = null)$/;"	function	line:27
+callback	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function get($url_data = null, $callback = null)$/;"	variable	line:27
+post	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function post($post_data = null, $callback = null)$/;"	function	line:33
+callback	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function post($post_data = null, $callback = null)$/;"	variable	line:33
+setCurl	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function setCurl()$/;"	function	line:39
+curl	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^        $this->curl = new Curl();$/;"	variable	line:41
+sslPost	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function sslPost($post_data = null, $callback = null)$/;"	function	line:43
+callback	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public function sslPost($post_data = null, $callback = null)$/;"	variable	line:43
+curl	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^        $curl = new Curl();$/;"	variable	line:45
+buildApiUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public static function buildApiUrl($url, $data = array())$/;"	function	line:55
+data	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public static function buildApiUrl($url, $data = array())$/;"	variable	line:55
+http_build_multi_query	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public static function http_build_multi_query($data, $key = null)$/;"	function	line:59
+key	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public static function http_build_multi_query($data, $key = null)$/;"	variable	line:59
+query	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^        $query = array();$/;"	variable	line:61
+is_array_assoc	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^        $is_array_assoc = self::is_array_assoc($data);$/;"	variable	line:65
+k	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^        foreach ($data as $k => $value) {$/;"	variable	line:66
+brackets	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^                $brackets = $is_array_assoc ? '['.$k.']' : '[]';$/;"	variable	line:68
+nested	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^                $nested = $key === null ? $k : $key.'['.$k.']';$/;"	variable	line:71
+is_array_assoc	/Users/kontem/workspace/github_project/CkWechat/src/Core/Http.php	/^    public static function is_array_assoc($array)$/;"	function	line:78
+AbstractApi	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^abstract class AbstractApi$/;"	class	line:12
+http	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $http;$/;"	variable	line:14
+api_url	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $api_url;$/;"	variable	line:15
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $access_token;$/;"	variable	line:16
+di	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public $di;$/;"	variable	line:17
+__construct	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function __construct()$/;"	function	line:18
+args	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args = func_get_args();$/;"	variable	line:20
+di	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->di = $args[0];$/;"	variable	line:22
+config	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->config = $this->di->config;$/;"	variable	line:24
+cache	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->cache = $this->di->cache;$/;"	variable	line:27
+access_token	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^                $this->access_token = $this->di->access_token;$/;"	variable	line:30
+getHttp	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    private function getHttp()$/;"	function	line:36
+http	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->http = new Http();$/;"	variable	line:39
+getApiUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    private function getApiUrl()$/;"	function	line:45
+api_url	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            $this->api_url = new ApiUrl();$/;"	variable	line:48
+call	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function call()$/;"	function	line:53
+args	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args = func_get_args();$/;"	variable	line:55
+args_count	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $args_count = func_num_args();$/;"	variable	line:56
+function	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $function = array_shift($args);$/;"	variable	line:57
+closures_parameters	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $closures_parameters = self::getFuncParameters($function);$/;"	variable	line:58
+closures_count	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $closures_count = !empty($closures_parameters)$/;"	variable	line:59
+setTokenUrl	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function setTokenUrl($url, $params = null)$/;"	function	line:67
+params	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public function setTokenUrl($url, $params = null)$/;"	variable	line:67
+getFuncParameters	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^    public static function getFuncParameters($function)$/;"	function	line:72
+parameters_list	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $parameters_list = array();$/;"	variable	line:74
+reflection	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $reflection = new \\ReflectionFunction($function);$/;"	variable	line:75
+arguments	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^        $arguments = $reflection->getParameters();$/;"	variable	line:76
+key	/Users/kontem/workspace/github_project/CkWechat/src/Core/AbstractApi.php	/^            foreach ($arguments as $key => $value) {$/;"	variable	line:78
 Qrcode	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^class Qrcode extends AbstractApi$/;"	class	line:14
 post_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    protected $post_data = array();$/;"	variable	line:16
 post_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    protected $post_data = array();$/;"	variable	line:16
@@ -110,3 +137,23 @@ post_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.
 ch	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $ch = $this->http->post(DataBase::toWxJson($this->post_data, JSON_UNESCAPED_SLASHES), $callback);$/;"	variable	line:72
 json_data	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^        $json_data = json_decode($ch->rawResponse, true);$/;"	variable	line:73
 showQrcode	/Users/kontem/workspace/github_project/CkWechat/src/Foundation/Qrcode.php	/^    public function showQrcode($ticket)$/;"	function	line:77
+CustomMenuService	/Users/kontem/workspace/github_project/CkWechat/src/Service/CustomMenuService.php	/^class CustomMenuService implements ServiceInterface$/;"	class	line:13
+register	/Users/kontem/workspace/github_project/CkWechat/src/Service/CustomMenuService.php	/^    public function register(Container $obj)$/;"	function	line:15
+app_id	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app_id = 'wx581a16fa4192ca31';$/;"	variable	line:7
+app_secret	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app_secret = 'b0616223f99423a233ac79debb5e8f63';$/;"	variable	line:9
+app_id	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app_id = 'wx05ac9cd2cb5492a5';$/;"	variable	line:12
+app_secret	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app_secret = '69ae1433782a6613a34d430252c78112';$/;"	variable	line:13
+config	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$config = array($/;"	variable	line:14
+app	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$app = new CkWechat\\Application($config);$/;"	variable	line:29
+expire_seconds	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^\/\/$scene_id = 0, $expire_seconds = 86400$/;"	variable	line:41
+menu_data	/Users/kontem/workspace/github_project/CkWechat/test/test.php	/^$menu_data = array("type"=>"click","name"=>"news","key"=>"get_news");$/;"	variable	line:47
+Menu	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^class Menu extends AbstractApi$/;"	class	line:14
+button_data	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^    public $button_data = array();$/;"	variable	line:16
+button_data	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^    public $button_data = array();$/;"	variable	line:16
+addButton	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^    public function addButton($menu_data)$/;"	function	line:17
+getButton	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^    public function getButton($callback = null)$/;"	function	line:24
+ch	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^        $ch = $this->http->get(array(), $callback);$/;"	variable	line:27
+commit	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^    public function commit($callback = null)$/;"	function	line:31
+post_data	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^        $post_data = array();$/;"	variable	line:34
+post_json	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^        $this->post_json = DataBase::toWxJson($post_data);$/;"	variable	line:36
+ch	/Users/kontem/workspace/github_project/CkWechat/src/CustomMenu/Menu.php	/^        $ch = $this->http->post($this->post_json, $callback);$/;"	variable	line:37
