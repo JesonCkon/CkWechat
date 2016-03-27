@@ -11,7 +11,7 @@ use CkWechat\Core\Request as Request;
 
 trait Event
 {
-    public $req = '';
+    public $request = '';
     public function __construct(){
         $this->request = new Request();
     }
@@ -36,7 +36,7 @@ trait Event
     {
         $key_val = $this->request->postParams($key);
         if ($key_val == $value) {
-            return $req->getPostData();
+            return $this->request->getPostData();
         } else {
             return false;
         }
