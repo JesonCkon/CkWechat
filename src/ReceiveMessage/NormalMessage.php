@@ -12,7 +12,15 @@ use CkWechat\Core\DataBase as DataBase;
 
 class NormalMessage extends AbstractApi
 {
-    use Event;
+    use Event {
+        Event::__construct as private __eventConstruct;
+    }
+    public function __construct()
+    {
+        $args_tmp = func_get_args();
+        parent::__construct($args_tmp[0]);
+        $this->__eventConstruct();
+    }
     public function valid()
     {
         $echostr = $this->checkSignature();
@@ -27,9 +35,12 @@ class NormalMessage extends AbstractApi
             //TODO
         } else {
             if ($this->request->postParams('MsgType') == 'text') {
-                # code...
+                $this->call($callback);
             }
-            $this->call($callback);
         }
+    }
+    public function image()
+    {
+        # code...
     }
 }
