@@ -106,13 +106,22 @@ class DataBase
     {
         return $mch_id.date('Ymd', time()).(microtime(true) * 1000);
     }
-    public function outString($data,$out_type='string')
+    public static function outString($data, $out_type = 'string')
     {
-        if (is_string($data) && $out_type=='string') {
+        if (is_string($data) && $out_type == 'string') {
             ob_clean();
             header('Content-Type: text/html; charset=utf-8');
             echo $data;
             exit;
         }
+    }
+    public static function getUrlCode($url = '')
+    {
+        if (empty($url)) {
+            return false;
+        }
+        $headers = get_headers($url);
+
+        return (int) substr($headers[0], 9, 3);
     }
 }

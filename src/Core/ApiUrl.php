@@ -41,6 +41,10 @@ class ApiUrl
     const UPDATEKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/update';
     const DELKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/del';
     const UPKFACCOUNTIMG = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
+
+    //多媒体上传下载
+    const MEDIA_GET='http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID';
+
     //二维码
     const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';
     const SHOWQRCODE = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
