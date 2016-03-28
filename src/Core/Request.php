@@ -31,6 +31,13 @@ class Request
             return;
         }
     }
+    /**
+     * [postParams description]
+     * @method postParams
+     * @param  string     $value post_data key
+     * @return string/array     返回对应键值的数据  字符串或者数组
+     */
+
     public function postParams($value = '')
     {
         $result = null;

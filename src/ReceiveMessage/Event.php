@@ -12,8 +12,11 @@ use CkWechat\Core\Request as Request;
 trait Event
 {
     public $request = '';
+    public $message_data = array();
     public function __construct(){
         $this->request = new Request();
+        $this->message_data = $this->request->getPostData();
+        $this->message_type = $this->request->postParams('MsgType');
     }
     public function checkSignature()
     {

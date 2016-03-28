@@ -28,19 +28,29 @@ class NormalMessage extends AbstractApi
             DataBase::outString($echostr);
         }
     }
-    public function text($message, $callback = null)
+    public function text($keyword, $callback = null)
     {
-        $this->post_data = $this->checkXmlByKey('Content', $message);
-        if ($this->post_data == false) {
-            //TODO
-        } else {
-            if ($this->request->postParams('MsgType') == 'text') {
+        if ($this->message_type == 'text') {
+            $this->post_data = $this->checkXmlByKey('Content', $keyword);
+            $this->post_data and $this->call($callback);
+        }
+    }
+    public function image($callback = null)
+    {
+        if ($this->message_type == 'image') {
+            $pic_url = $this->request->postParams('PicUrl');
+            if (DataBase::getUrlCode($pic_url) == 200) {
                 $this->call($callback);
             }
         }
     }
-    public function image()
+    public function voice($callback = null)
     {
-        # code...
+        if ($this->message_type == 'voice') {
+            $media_id = $this->request->postParams('MediaId');
+            if (DataBase::getUrlCode($pic_url) == 200) {
+                $this->call($callback);
+            }
+        }
     }
 }
