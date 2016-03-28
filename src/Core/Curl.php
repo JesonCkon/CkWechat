@@ -151,6 +151,16 @@ class Curl
         $this->beforeSend($callback);
         $this->run();
     }
+    public function download($url, $path = '', $callback = null)
+    {
+        $fp = fopen($path, 'w+');
+        $this->setUrl($url);
+        $this->setOpt(CURLOPT_FILE, $fp);
+        $this->setOpt(CURLOPT_FOLLOWLOCATION, true);
+        $this->beforeSend($callback);
+        $this->run();
+        fclose($fp);
+    }
     public function close()
     {
         if (is_resource($this->curl)) {
