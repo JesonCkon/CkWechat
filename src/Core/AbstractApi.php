@@ -72,6 +72,9 @@ abstract class AbstractApi
     public static function getFuncParameters($function)
     {
         $parameters_list = array();
+        if (empty($function)) {
+          return $parameters_list;
+        }
         $reflection = new \ReflectionFunction($function);
         $arguments = $reflection->getParameters();
         if ($arguments) {

@@ -43,7 +43,7 @@ class ApiUrl
     const UPKFACCOUNTIMG = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
 
     //多媒体上传下载
-    const MEDIA_GET='http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID';
+    const MEDIA_GET='http://file.api.weixin.qq.com/cgi-bin/media/get';
 
     //二维码
     const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';

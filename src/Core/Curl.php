@@ -110,15 +110,16 @@ class Curl
             call_user_func_array($function, $args);
         }
     }
-    public function run()
+    public function run($is_download = false)
     {
         $this->setSSL();
 
         $this->setHeader();
         $this->setProxy();
-
-        $this->setOpt(CURLINFO_HEADER_OUT, true);
-        $this->setOpt(CURLOPT_RETURNTRANSFER, true);
+        if ($is_download == false) {
+            $this->setOpt(CURLINFO_HEADER_OUT, true);
+            $this->setOpt(CURLOPT_RETURNTRANSFER, true);
+        }
 
         $this->call($this->beforeSendFunction);
         $this->rawResponse = curl_exec($this->curl);
@@ -154,11 +155,12 @@ class Curl
     public function download($url, $path = '', $callback = null)
     {
         $fp = fopen($path, 'w+');
+        $this->setCurl();//re init
         $this->setUrl($url);
         $this->setOpt(CURLOPT_FILE, $fp);
         $this->setOpt(CURLOPT_FOLLOWLOCATION, true);
         $this->beforeSend($callback);
-        $this->run();
+        $this->run(true);
         fclose($fp);
     }
     public function close()

@@ -36,6 +36,12 @@ class Http
 
         return $this->curl;
     }
+    public function download($url = '', $path = '', $callback = null)
+    {
+        $this->curl->download($url, $path, $callback);
+
+        return $this->curl;
+    }
     public function setCurl()
     {
         $this->curl = new Curl();

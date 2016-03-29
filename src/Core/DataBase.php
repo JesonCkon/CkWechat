@@ -112,7 +112,14 @@ class DataBase
             ob_clean();
             header('Content-Type: text/html; charset=utf-8');
             echo $data;
-            exit;
+        } elseif ($out_type == 'wx_xml') {
+            ob_clean();
+            header('Content-Type: text/html; charset=utf-8');
+            if (is_string($data)) {
+                echo $data;
+            } else {
+                echo self::toXml($data);
+            }
         }
     }
     public static function getUrlCode($url = '')
@@ -123,5 +130,18 @@ class DataBase
         $headers = get_headers($url);
 
         return (int) substr($headers[0], 9, 3);
+    }
+    public static function get_real_filename($headers)
+    {
+        foreach ($headers as $header) {
+            if (strpos(strtolower($header), 'content-disposition') !== false) {
+                $tmp_name = explode('=', $header);
+                if ($tmp_name[1]) {
+                    return trim($tmp_name[1], '";\'');
+                }
+            }
+        }
+
+        return false;
     }
 }
