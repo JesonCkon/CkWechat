@@ -124,9 +124,20 @@ class NormalMessage extends AbstractApi
 
         return $this;
     }
-    public function shortvideoReply($value = '')
+    public function musicReply($data=null)
     {
-        # code...
+        $array=array();
+        $array['Music']['Title']='';
+        $array['Music']['Description']='';
+        $array['Music']['MusicUrl']='';
+        $array['Music']['HQMusicUrl']='';
+        $array['Music']['ThumbMediaId']='';
+        $xml_string = DataBase::makeXmlStr($array);
+        DataBase::outString($xml_string);
+    }
+    public function makeMusicXml($data)
+    {
+
     }
     public function location($callback = null)
     {

@@ -38,10 +38,6 @@ class DataBase
     }
     public static function toXml($data)
     {
-        if (!is_array($data) || count($data) <= 0) {
-            throw new \Exception('数组数据异常！');
-        }
-
         $xml = '<xml>';
         foreach ($data as $key => $val) {
             if (is_numeric($val)) {
@@ -53,6 +49,23 @@ class DataBase
         $xml .= '</xml>';
 
         return $xml;
+    }
+    public static function makeXmlStr($data)
+    {
+        $str = '';
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                if (is_numeric($value)) {
+                    $str .= '<'.$key.'>'.$value.'</'.$key.'>';
+                } elseif (is_string($value)) {
+                    $str .= '<'.$key.'><![CDATA['.$value.']]></'.$key.'>';
+                } elseif (is_array($value)) {
+                    $str .= '<'.$key.'>'.self::makeXmlStr($value).'</'.$key.'>';
+                }
+            }
+        }
+
+        return $str;
     }
     public static function xmlToArray($string = '')
     {
