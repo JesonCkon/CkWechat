@@ -16,8 +16,8 @@ class Menu extends AbstractApi
     public $button_data = array();
     public function addButton($menu_data, $callback = null)
     {
-        if (!isset($menu_data['type']) || !isset($menu_data['name'])) {
-            
+        if (!isset($menu_data['name'])) {
+            return;
         }
         $this->button_data[] = $menu_data;
     }
@@ -36,6 +36,12 @@ class Menu extends AbstractApi
         $this->post_json = DataBase::toWxJson($post_data);
         $ch = $this->http->post($this->post_json, $callback);
 
+        return $ch->rawResponse;
+    }
+    public function del()
+    {
+        $this->setTokenUrl(ApiUrl::DELETEMENU);
+        $ch = $this->http->get(array(), $callback);
         return $ch->rawResponse;
     }
 }

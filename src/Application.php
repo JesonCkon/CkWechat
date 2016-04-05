@@ -35,6 +35,7 @@ class Application extends Container
       'CkWechat\Service\CompanyPaymentsService',
       'CkWechat\Service\FoundationService',
       'CkWechat\Service\NormalMessageService',
+      'CkWechat\Service\ButtonMessageService',
       'CkWechat\Service\QrcodeService',
       'CkWechat\Service\MediaService',
     );
