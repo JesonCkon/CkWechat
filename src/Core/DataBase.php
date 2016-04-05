@@ -36,6 +36,14 @@ class DataBase
             return false;
         }
     }
+    public static function getJsonByKey($json_str,$key)
+    {
+        $json_data = self::checkJson();
+        if ($json_data) {
+          return $json[$key];
+        }
+        return false;
+    }
     public static function toXml($data)
     {
         $xml = '<xml>';
