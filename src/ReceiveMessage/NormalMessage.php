@@ -64,13 +64,15 @@ class NormalMessage extends AbstractApi
     }
     public function imageReply($media_id = '', $callback = null)
     {
+        if (empty($media_id)) {
+            return;
+        }
         $xml_data['ToUserName'] = $this->post_data['FromUserName'];
         $xml_data['FromUserName'] = $this->post_data['ToUserName'];
         $xml_data['CreateTime'] = time();
         $xml_data['MsgType'] = 'image';
-        $xml_data['Image'] = '';
-        $xml_string = DataBase::toXml($xml_data);
-        $xml_string = str_replace('<Image><![CDATA[]]></Image>', '<Image><MediaId><![CDATA['.$media_id.']]></MediaId></Image>', $xml_string);
+        $xml_data['Image']['MediaId'] = $media_id;
+        $xml_string = DataBase::makeXmlStr($xml_data);
         DataBase::outString($xml_string, 'wx_xml');
         $this->call($callback);
     }
@@ -89,9 +91,8 @@ class NormalMessage extends AbstractApi
         $xml_data['FromUserName'] = $this->post_data['ToUserName'];
         $xml_data['CreateTime'] = time();
         $xml_data['MsgType'] = 'voice';
-        $xml_data['Voice'] = '';
-        $xml_string = DataBase::toXml($xml_data);
-        $xml_string = str_replace('<Voice><![CDATA[]]></Voice>', '<Voice><MediaId><![CDATA['.$media_id.']]></MediaId></Voice>', $xml_string);
+        $xml_data['Voice']['MediaId'] = $media_id;
+        $xml_string = DataBase::makeXmlStr($xml_data);
         DataBase::outString($xml_string, 'wx_xml');
         $this->call($callback);
     }
@@ -110,9 +111,8 @@ class NormalMessage extends AbstractApi
         $xml_data['FromUserName'] = $this->post_data['ToUserName'];
         $xml_data['CreateTime'] = time();
         $xml_data['MsgType'] = 'Video';
-        $xml_data['Video'] = '';
-        $xml_string = DataBase::toXml($xml_data);
-        $xml_string = str_replace('<Video><![CDATA[]]></Video>', '<Video><MediaId><![CDATA['.$media_id.']]></MediaId></Video>', $xml_string);
+        $xml_data['Video']['MediaId'] = $media_id;
+        $xml_string = DataBase::makeXmlStr($xml_data);
         DataBase::outString($xml_string, 'wx_xml');
         $this->call($callback);
     }
@@ -124,20 +124,21 @@ class NormalMessage extends AbstractApi
 
         return $this;
     }
-    public function musicReply($data=null)
+    public function musicReply($data = null, $callback = null)
     {
-        $array=array();
-        $array['Music']['Title']='';
-        $array['Music']['Description']='';
-        $array['Music']['MusicUrl']='';
-        $array['Music']['HQMusicUrl']='';
-        $array['Music']['ThumbMediaId']='';
-        $xml_string = DataBase::makeXmlStr($array);
+        $xml_string = DataBase::makeXmlStr($this->makeMusicXml($data));
         DataBase::outString($xml_string);
     }
-    public function makeMusicXml($data)
+    public function makeMusicXml($data = null)
     {
+        $xml_data = array();
+        $xml_data['Music']['Title'] = isset($data['Title']) ? $data['Title'] : '';
+        $xml_data['Music']['Description'] = isset($data['Description']) ? $data['Description'] : '';
+        $xml_data['Music']['MusicUrl'] = isset($data['MusicUrl']) ? $data['MusicUrl'] : '';
+        $xml_data['Music']['HQMusicUrl'] = isset($data['HQMusicUrl']) ? $data['HQMusicUrl'] : '';
+        $xml_data['Music']['ThumbMediaId'] = isset($data['ThumbMediaId']) ? $data['ThumbMediaId'] : '';
 
+        return $xml_data;
     }
     public function location($callback = null)
     {
