@@ -43,7 +43,15 @@ class ApiUrl
     const UPKFACCOUNTIMG = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
 
     //多媒体上传下载
-    const MEDIA_GET='http://file.api.weixin.qq.com/cgi-bin/media/get';
+    const MEDIA_GET = 'http://file.api.weixin.qq.com/cgi-bin/media/get';
+    const MEDIA_UPLOAD = 'https://api.weixin.qq.com/cgi-bin/media/upload';
+    const MEDIA_COUNT = 'https://api.weixin.qq.com/cgi-bin/material/get_materialcount';
+    const MEDIA_ADD_NEWS = 'https://api.weixin.qq.com/cgi-bin/material/add_news';
+    const MEDIA_UPDATE_NEWS = 'https://api.weixin.qq.com/cgi-bin/material/update_news';
+    const MEDIA_DEL = 'https://api.weixin.qq.com/cgi-bin/material/del_material';
+    const MEDIA_ADD_NEWS_IMG = 'https://api.weixin.qq.com/cgi-bin/media/uploadimg';
+    const MEDIA_ADD_MATERIAL = 'https://api.weixin.qq.com/cgi-bin/material/add_material';
+    const MEDIA_BATCHGET_MATERIAL = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material';
 
     //二维码
     const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';
