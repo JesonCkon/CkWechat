@@ -13,10 +13,14 @@ trait Event
 {
     public $request = '';
     public $message_data = array();
-    public function __construct(){
+    public $message_type = '';
+    public $message_event = '';
+    public function __construct()
+    {
         $this->request = new Request();
         $this->message_data = $this->request->getPostData();
         $this->message_type = $this->request->postParams('MsgType');
+        $this->message_event = $this->request->postParams('Event');
     }
     public function checkSignature()
     {
@@ -43,5 +47,13 @@ trait Event
         } else {
             return false;
         }
+    }
+    public function getXmlByKey($key)
+    {
+        if (empty($key)) {
+            return;
+        }
+
+        return $this->request->postParams($key);
     }
 }
