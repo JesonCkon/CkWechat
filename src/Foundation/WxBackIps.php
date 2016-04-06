@@ -15,11 +15,12 @@ class WxBackIps extends AbstractApi
     public $get_data;
     public $iplist = array();
     /**
-     * 通过API获取 微信服务器ip列表
+     * 通过API获取 微信服务器ip列表.
+     *
      * @method get
+     *
      * @return array array(0=>'ip1',1=>'ip2')
      */
-
     public function get()
     {
         $this->http->setUrl(ApiUrl::BACKIPS);
@@ -31,18 +32,31 @@ class WxBackIps extends AbstractApi
         return $this->iplist;
     }
     /**
-     * 检验是否为合法的微信服务器ip
+     * 检验是否为合法的微信服务器ip.
+     *
      * @method checkoutIps
-     * @param  string      $ip need to check wechat backserver ips
-     * @return boolean     true or false
+     *
+     * @param string $ip need to check wechat backserver ips
+     *
+     * @return bool true or false
      */
-
-    public function checkoutIps($ip='')
+    public function checkoutIps($ip = '')
     {
         if (empty($this->iplist)) {
             $this->get();
         }
         $is_true = array_search($ip, $this->iplist, true);
-        return (boolean)$is_true;
+
+        return (boolean) $is_true;
+    }
+    /**
+     * 设置缓存
+     *
+     * @method setCacahe
+     */
+    public function setCacahe()
+    {
+        
+        return false;
     }
 }
