@@ -35,7 +35,7 @@ class ApiUrl
     const DELETEGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/delete';
 
     //custom service
-    const MESSAGECUSTOMSEND = 'https://api.weixin.qq.com/cgi-bin/message/custom/send';
+    const SERVICE_SEND = 'https://api.weixin.qq.com/cgi-bin/message/custom/send';
     const KFACCOUNTADD = 'https://api.weixin.qq.com/customservice/kfaccount/add';
     const GETKFACCOUNT = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist';
     const UPDATEKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/update';
