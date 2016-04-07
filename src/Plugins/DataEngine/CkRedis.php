@@ -16,7 +16,11 @@ class CkRedis
     protected $config;
     protected $timeout = 1;
     protected $read_length = 1024;
-
+    /**
+     * [__construct description].
+     *
+     * @method __construct
+     */
     public function __construct()
     {
         $args_count = func_num_args();
@@ -34,6 +38,13 @@ class CkRedis
         }
         $this->connect();
     }
+    /**
+     * fsockopen 连接.
+     *
+     * @method connect
+     *
+     * @return bool
+     */
     public function connect()
     {
         $this->sock = fsockopen($this->host, $this->port, $errno, $errstr, $this->timeout);
@@ -41,8 +52,19 @@ class CkRedis
             #TODO
           #echo "$errstr ($errno)<br />\n";
         }
+
+        return true;
     }
-    public function _redisGet($key)
+    /**
+     * redis get.
+     *
+     * @method _redisGet
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function _redisGet($key = '')
     {
         if (empty($key)) {
             return;
@@ -52,7 +74,18 @@ class CkRedis
 
         return $this->_getValue();
     }
-    public function _redisSet($key, $value, $timeout = 0)
+    /**
+     * redis set.
+     *
+     * @method _redisSet
+     *
+     * @param  $key     [description]
+     * @param [type] $value   [description]
+     * @param int    $timeout [description]
+     *
+     * @return bool [description]
+     */
+    public function _redisSet($key = '', $value = '', $timeout = 0)
     {
         if (empty($key) || empty($value)) {
             return;
@@ -60,7 +93,7 @@ class CkRedis
         $str = "SET {$key} {$value}\r\n";
         if ($this->runCommand($str) == true) {
             if ($timeout > 0) {
-                return $this->runCommand("EXPIRE {$key} {$timeout}\r\n");
+                return $this->runCommand("EXPIRE {$key} {$timeout}".self::ED);
             }
 
             return true;
@@ -68,14 +101,50 @@ class CkRedis
             # code... TODO
         }
     }
-    public function _write($string)
+    /**
+     * redis ttl
+     * @method _redisCheckTimeOut
+     * @param  string             $key
+     * @return boolean
+     */
+
+    public function _redisCheckTimeOut($key = '')
+    {
+        if (empty($key)) {
+            return false;
+        }
+        $str = "TTL {$key}".self::ED;
+
+        $s = $this->runCommand($str);
+        if (intval($s) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /**
+     * fsockopen write
+     * @method _write
+     * @param  string $string
+     * @return boolean
+     */
+
+    public function _write($string='')
     {
         if ($this->sock) {
             fwrite($this->sock, $string);
+            return true;
         }
 
         return false;
     }
+    /**
+     * fsockopen read fgets
+     * @method _read
+     * @param  integer $length
+     * @return string
+     */
+
     private function _read($length = 0)
     {
         $length = $length > 0 ? $length : $this->read_length;
@@ -86,6 +155,12 @@ class CkRedis
       //TODO
       //trigger_error("Cannot read from socket.", E_USER_ERROR);
     }
+    /**
+     * Redis协议 返回值处理
+     * @method _getValue
+     * @param  integer   $length [description]
+     */
+
     public function _getValue($length = 0)
     {
         $reply = null;
@@ -113,33 +188,38 @@ class CkRedis
             return $reply;
         }
     }
+    /**
+     * command 执行
+     * @method runCommand
+     * @param  string     $str
+     * @param  integer    $length
+     * @return string
+     */
+
     public function runCommand($str, $length = 0)
     {
         $this->_write($str);
 
         return $this->_getValue($length);
     }
+    /**
+     * fsock 关闭
+     * @method disconnect
+     * @return [type]     [description]
+     */
+
     public function disconnect()
     {
         if ($this->sock) {
             fclose($this->sock);
         }
     }
+    /**
+     * __destruct
+     * @method __destruct
+     */
     public function __destruct()
     {
         $this->disconnect();
     }
 }
-
-/*test*/
-$config = array();
-$config['host'] = '127.0.0.1';
-$config['port'] = 6379;
-$config['timeout'] = 1500;
-$app = new CkRedis($config);
-
-#var_dump($app->_redisGet('ck'));
-#var_dump($app->_redisSet('ck', '008867', 2));
-#sleep(5);
-var_dump($app->runCommand("TTL ck\r\n"));
-#var_dump($app->_redisGet('ck'));
