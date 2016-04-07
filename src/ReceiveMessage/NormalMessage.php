@@ -12,16 +12,26 @@ use CkWechat\Core\DataBase as DataBase;
 
 class NormalMessage extends AbstractApi
 {
-    use Event,Reply {
+    use Event,Reply,Push {
         Event::__construct as private __eventConstruct;
     }
     public $xml_data = '';
+    /**
+     * [__construct description]
+     * @method __construct
+     */
+
     public function __construct()
     {
         $args_tmp = func_get_args();
         parent::__construct($args_tmp[0]);
         $this->__eventConstruct();
     }
+    /**
+     * 微信检验
+     * @method valid
+     */
+
     public function valid()
     {
         $echostr = $this->checkSignature();

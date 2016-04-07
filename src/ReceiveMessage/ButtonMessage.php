@@ -15,7 +15,7 @@ class ButtonMessage extends AbstractApi
      * 	多重继承与event事件，Reply消息回复
      */
 
-    use Event,Reply {
+    use Event,Reply,Push {
       Event::__construct as private __eventConstruct;
     }
     /**
@@ -25,7 +25,7 @@ class ButtonMessage extends AbstractApi
      */
     public function __construct()
     {
-        $args_tmp = func_get_args();
+        $args_tmrp = func_get_args();
         parent::__construct($args_tmp[0]);
         $this->__eventConstruct();
     }
@@ -63,16 +63,6 @@ class ButtonMessage extends AbstractApi
     {
         $this->post_data = null;
         if ($this->message_type == 'event' && $this->message_event == 'VIEW') {
-            $this->post_data = $this->checkXmlByKey('EventKey', $key);
-            $this->post_data and $this->call($callback);
-        }
-
-        return $this;
-    }
-    public function scancodePush($key = '', $callback = null)
-    {
-        $this->post_data = null;
-        if ($this->message_type == 'event' && $this->message_event == 'scancode_push') {
             $this->post_data = $this->checkXmlByKey('EventKey', $key);
             $this->post_data and $this->call($callback);
         }
