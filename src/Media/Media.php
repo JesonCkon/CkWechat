@@ -38,7 +38,8 @@ class Media extends AbstractApi
         $upload_url = $this->http->buildApiUrl(ApiUrl::MEDIA_UPLOAD, $get_data);
         $this->http->setUrl($upload_url);
         $file_data = array('media' => '@'.$file_path);
-        $ch = $this->http->post($file_data, $callback);
+        $ch = $this->http->post($file_data);
+        $this->call($callback);
 
         return $ch->rawResponse;
     }
