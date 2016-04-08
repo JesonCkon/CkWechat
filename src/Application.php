@@ -39,6 +39,8 @@ class Application extends Container
       'CkWechat\Service\QrcodeService',
       'CkWechat\Service\MediaService',
       'CkWechat\Service\ServiceSendService',
+      'CkWechat\Service\SendAllService',
+      'CkWechat\Service\SendService',
     );
     public function __construct($config)
     {

@@ -53,6 +53,15 @@ class ApiUrl
     const MEDIA_ADD_MATERIAL = 'https://api.weixin.qq.com/cgi-bin/material/add_material';
     const MEDIA_BATCHGET_MATERIAL = 'https://api.weixin.qq.com/cgi-bin/material/batchget_material';
 
+    //群发消息
+    const MESSAGE_MEDIA_NEWS_UPLOAD = 'https://api.weixin.qq.com/cgi-bin/media/uploadnews';
+    const MESSAGE_MEDIA_VIDEO_UPLOAD = 'https://api.weixin.qq.com/cgi-bin/media/uploadvideo';
+    const MESSAGE_SEND_ALL = 'https://api.weixin.qq.com/cgi-bin/message/mass/sendall';
+    const MESSAGE_SEND_OPENID = 'https://api.weixin.qq.com/cgi-bin/message/mass/send';
+    const MESSAGE_DELETE = 'https://api.weixin.qq.com/cgi-bin/message/mass/delete';
+    const MESSAGE_PREVIEW = 'https://api.weixin.qq.com/cgi-bin/message/mass/preview';
+    const MESSAGE_GET ='https://api.weixin.qq.com/cgi-bin/message/mass/get';
+
     //二维码
     const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';
     const SHOWQRCODE = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
