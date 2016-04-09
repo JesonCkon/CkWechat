@@ -98,7 +98,7 @@ class NormalMessage extends AbstractApi
     }
     public function sendSuccess($callback = null)
     {
-      if ($this->message_type == 'event' && $this->message_event == 'MASSSENDJOBFINISH')) {
+      if ($this->message_type == 'event' && $this->message_event == 'MASSSENDJOBFINISH') {
           $mid = $this->request->postParams('MsgID');
           if ($mid>0) {
               $this->post_data = $this->request->getPostData();
