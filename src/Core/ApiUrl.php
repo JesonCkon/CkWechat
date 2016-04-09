@@ -36,11 +36,12 @@ class ApiUrl
 
     //custom service
     const SERVICE_SEND = 'https://api.weixin.qq.com/cgi-bin/message/custom/send';
-    const KFACCOUNTADD = 'https://api.weixin.qq.com/customservice/kfaccount/add';
-    const GETKFACCOUNT = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist';
-    const UPDATEKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/update';
-    const DELKFACCOUNT = 'https://api.weixin.qq.com/customservice/kfaccount/del';
-    const UPKFACCOUNTIMG = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
+    const SERVICE_USER_ADD = 'https://api.weixin.qq.com/customservice/kfaccount/add';
+    const SERVICE_USER_GET = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist';
+    const SERVICE_USER_OL_GET = 'https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist';
+    const SERVICE_USER_UPDATE = 'https://api.weixin.qq.com/customservice/kfaccount/update';
+    const SERVICE_USER_DEL = 'https://api.weixin.qq.com/customservice/kfaccount/del';
+    const SERVICE_USER_UPLOADHEADIMG = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg';
 
     //多媒体上传下载
     const MEDIA_GET = 'http://file.api.weixin.qq.com/cgi-bin/media/get';
@@ -60,7 +61,7 @@ class ApiUrl
     const MESSAGE_SEND_OPENID = 'https://api.weixin.qq.com/cgi-bin/message/mass/send';
     const MESSAGE_DELETE = 'https://api.weixin.qq.com/cgi-bin/message/mass/delete';
     const MESSAGE_PREVIEW = 'https://api.weixin.qq.com/cgi-bin/message/mass/preview';
-    const MESSAGE_GET ='https://api.weixin.qq.com/cgi-bin/message/mass/get';
+    const MESSAGE_GET = 'https://api.weixin.qq.com/cgi-bin/message/mass/get';
 
     //二维码
     const QRCODE_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create';
