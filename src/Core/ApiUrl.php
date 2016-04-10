@@ -50,7 +50,10 @@ class ApiUrl
     const DATASTAT_GETUPSTREAMMSGMONTH ='https://api.weixin.qq.com/datacube/getupstreammsgmonth';
     const DATASTAT_GETUPSTREAMMSGDIST ='https://api.weixin.qq.com/datacube/getupstreammsgdist';
     const DATASTAT_GETUPSTREAMMSGDISTWEEK ='https://api.weixin.qq.com/datacube/getupstreammsgdistweek';
-    const datastat_getupstreammsgdistmonth ='https://api.weixin.qq.com/datacube/getupstreammsgdistmonth';
+    const DATASTAT_GETUPSTREAMMSGDISTMONTH ='https://api.weixin.qq.com/datacube/getupstreammsgdistmonth';
+    const datastat_getinterfacesummary= 'https://api.weixin.qq.com/datacube/getinterfacesummary';
+
+
     //custom service
     const SERVICE_SEND = 'https://api.weixin.qq.com/cgi-bin/message/custom/send';
     const SERVICE_USER_ADD = 'https://api.weixin.qq.com/customservice/kfaccount/add';

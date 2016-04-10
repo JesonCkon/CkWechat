@@ -11,6 +11,7 @@ use CkWechat\Core\Container as Container;
 use CkWechat\DataStat\User as DataStatUser;
 use CkWechat\DataStat\News as DataStatNews;
 use CkWechat\DataStat\Message as DataStatMessage;
+use CkWechat\DataStat\Iface as DataStatIface;
 
 class DataStatService implements ServiceInterface
 {
@@ -25,5 +26,8 @@ class DataStatService implements ServiceInterface
         $obj->dataStatMessage = function ($obj) {
           return new DataStatMessage($obj);
         };
+        $obj->dataStatIface = function ($obj) {
+          return new DataStatIface($obj);
+        };        
     }
 }
