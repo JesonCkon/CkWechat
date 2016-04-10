@@ -42,6 +42,7 @@ class Application extends Container
       'CkWechat\Service\SendAllService',
       'CkWechat\Service\SendService',
       'CkWechat\Service\CsUserService',
+      'CkWechat\Service\CustomUserService',
     );
     public function __construct($config)
     {

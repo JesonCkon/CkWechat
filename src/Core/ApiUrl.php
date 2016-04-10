@@ -20,19 +20,19 @@ class ApiUrl
     const GET_CURRENT_SELFMENU_INFO = 'https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info';
 
     //user account
-    const GETUSERS = 'https://api.weixin.qq.com/cgi-bin/user/get';
-    const GETUSERINFO = 'https://api.weixin.qq.com/cgi-bin/user/info';
-    const SETUSERMARK = 'https://api.weixin.qq.com/cgi-bin/user/info/updateremark';
-    const UPDATEREMARK = 'https://api.weixin.qq.com/cgi-bin/user/info/updateremark';
+    const USER_GET = 'https://api.weixin.qq.com/cgi-bin/user/get';
+    const USER_GET_INFO = 'https://api.weixin.qq.com/cgi-bin/user/info';
+    const USER_BATCHGET_INFO = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget';
+    const USER_UPDATEREMARK = 'https://api.weixin.qq.com/cgi-bin/user/info/updateremark';
 
     // user group
-    const CREATEGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/create';
-    const GETGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/get';
-    const GETUSERGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/getid';
-    const UPDATEGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/update';
-    const UPDATEUSERGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/members/update';
-    const BATCHUPDATEUSERSGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/members/batchupdate';
-    const DELETEGROUPS = 'https://api.weixin.qq.com/cgi-bin/groups/delete';
+    const GROUP_ADD = 'https://api.weixin.qq.com/cgi-bin/groups/create';
+    const GROUP_GET = 'https://api.weixin.qq.com/cgi-bin/groups/get';
+    const GROUP_GETID = 'https://api.weixin.qq.com/cgi-bin/groups/getid';
+    const GROUP_UPDATE = 'https://api.weixin.qq.com/cgi-bin/groups/update';
+    const GROUP_MEMBERS_UPDATE = 'https://api.weixin.qq.com/cgi-bin/groups/members/update';
+    const GROUP_MEMBERS_BATCHUPDATE = 'https://api.weixin.qq.com/cgi-bin/groups/members/batchupdate';
+    const GROUP_DEL = 'https://api.weixin.qq.com/cgi-bin/groups/delete';
 
     //custom service
     const SERVICE_SEND = 'https://api.weixin.qq.com/cgi-bin/message/custom/send';
