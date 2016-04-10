@@ -34,6 +34,23 @@ class ApiUrl
     const GROUP_MEMBERS_BATCHUPDATE = 'https://api.weixin.qq.com/cgi-bin/groups/members/batchupdate';
     const GROUP_DEL = 'https://api.weixin.qq.com/cgi-bin/groups/delete';
 
+    //data stat
+    const DATASTAT_GETUSERSUMMARY = 'https://api.weixin.qq.com/datacube/getusersummary';
+    const DATASTAT_GETUSERCUMULATE = 'https://api.weixin.qq.com/datacube/getusercumulate';
+
+    const DATASTAT_GETARTICLESUMMARY = 'https://api.weixin.qq.com/datacube/getarticlesummary';
+    const DATASTAT_GETARTICLETOTAL = 'https://api.weixin.qq.com/datacube/getarticletotal';
+    const DATASTAT_GETUSERREAD = 'https://api.weixin.qq.com/datacube/getuserread';
+    const DATASTAT_GETUSERREADHOUR = 'https://api.weixin.qq.com/datacube/getuserreadhour';
+    const DATASTAT_GETUSERSHARE = 'https://api.weixin.qq.com/datacube/getusershare';
+    const DATASTAT_GETUSERSHAREHOUR ='https://api.weixin.qq.com/datacube/getusersharehour';
+    const DATASTAT_GETUPSTREAMMSG ='https://api.weixin.qq.com/datacube/getupstreammsg';
+    const DATASTAT_GETUPSTREAMMSGHOUR ='https://api.weixin.qq.com/datacube/getupstreammsghour';
+    const DATASTAT_GETUPSTREAMMSGWEEK ='https://api.weixin.qq.com/datacube/getupstreammsgweek';
+    const DATASTAT_GETUPSTREAMMSGMONTH ='https://api.weixin.qq.com/datacube/getupstreammsgmonth';
+    const DATASTAT_GETUPSTREAMMSGDIST ='https://api.weixin.qq.com/datacube/getupstreammsgdist';
+    const DATASTAT_GETUPSTREAMMSGDISTWEEK ='https://api.weixin.qq.com/datacube/getupstreammsgdistweek';
+    const datastat_getupstreammsgdistmonth ='https://api.weixin.qq.com/datacube/getupstreammsgdistmonth';
     //custom service
     const SERVICE_SEND = 'https://api.weixin.qq.com/cgi-bin/message/custom/send';
     const SERVICE_USER_ADD = 'https://api.weixin.qq.com/customservice/kfaccount/add';
