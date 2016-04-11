@@ -28,6 +28,6 @@ class DataStatService implements ServiceInterface
         };
         $obj->dataStatIface = function ($obj) {
           return new DataStatIface($obj);
-        };        
+        };
     }
 }
