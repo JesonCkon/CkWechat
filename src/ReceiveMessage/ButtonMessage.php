@@ -25,7 +25,7 @@ class ButtonMessage extends AbstractApi
      */
     public function __construct()
     {
-        $args_tmrp = func_get_args();
+        $args_tmp = func_get_args();
         parent::__construct($args_tmp[0]);
         $this->__eventConstruct();
     }
